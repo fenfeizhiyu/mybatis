@@ -99,6 +99,7 @@ public abstract class BaseDataTest {
 
   public static DataSource createMySqlDataSource() throws IOException, SQLException{
     DataSource ds = createUnpooledDataSource(MYSQL_PROPERTIES);
+    //test
     return ds;
   }
 
