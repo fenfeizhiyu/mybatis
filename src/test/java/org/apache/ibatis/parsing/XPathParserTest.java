@@ -21,6 +21,15 @@ import java.io.InputStream;
 
 import org.apache.ibatis.io.Resources;
 import org.junit.Test;
+import org.w3c.dom.Document;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.xpath.XPath;
+import javax.xml.xpath.XPathConstants;
+import javax.xml.xpath.XPathFactory;
 
 public class XPathParserTest {
 
@@ -41,6 +50,43 @@ public class XPathParserTest {
     XNode node = parser.evalNode("/employee/height");
     assertEquals("employee/height", node.getPath());
     assertEquals("employee[${id_var}]_height", node.getValueBasedIdentifier());
+  }
+
+  @Test
+  public void testXmlParser()throws Exception{
+    String resource="resources/nodelet_test.xml";
+    try{
+        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+        InputStream inputStream = Resources.getResourceAsStream(resource);
+        factory.setValidating(false);
+        //名称空间
+        factory.setNamespaceAware(false);
+        //忽略注释
+        factory.setIgnoringComments(true);
+        //忽略空白
+        factory.setIgnoringElementContentWhitespace(false);
+        //把 CDATA 节点转换为 Text 节点
+        factory.setCoalescing(false);
+        //扩展实体引用
+        factory.setExpandEntityReferences(true);
+        DocumentBuilder builder = factory.newDocumentBuilder();
+        Document document=builder.parse(inputStream);
+        XPathFactory xPathFactory = XPathFactory.newInstance();
+        XPath xPath = xPathFactory.newXPath();
+       // System.out.println("**:"+xPath.evaluate("/configuration/properties",document, XPathConstants.STRING));
+        NodeList nodes=document.getChildNodes();
+        printNodes(nodes);
+        Node node= nodes.item(0);
+        System.out.println((node.getChildNodes().getLength()));
+    }catch (Exception e){
+        e.printStackTrace();
+    }
+  }
+
+  private void printNodes(NodeList nodes){
+      for (int i = 0; i < nodes.getLength(); i++) {
+            System.out.println(nodes.item(i).getNodeName());
+      }
   }
 
 }
