@@ -100,28 +100,85 @@ public class Configuration {
   protected Environment environment;
 
   //---------以下都是<settings>节点-------
+  /**
+   * 允许在嵌套语句中使用分页（RowBounds）。 If allow, set the false.
+   */
   protected boolean safeRowBoundsEnabled = false;
+  /**
+   * 允许在嵌套语句中使用分页（ResultHandler）。 If allow, set the false.
+   */
   protected boolean safeResultHandlerEnabled = true;
+  /**
+   * 是否开启自动驼峰命名规则（camel case）映射，即从经典数据库列名 A_COLUMN 到经典 Java 属性名 aColumn 的类似映射。
+   */
   protected boolean mapUnderscoreToCamelCase = false;
+
+  /**
+   * 当启用时，对任意延迟属性的调用会使带有延迟加载属性的对象完整加载；反之，每种属性将会按需加载
+   */
   protected boolean aggressiveLazyLoading = true;
+  /**
+   * 是否允许单一语句返回多结果集（需要兼容驱动）。
+   */
   protected boolean multipleResultSetsEnabled = true;
+  /**
+   *允许 JDBC 支持自动生成主键，需要驱动兼容。 如果设置为 true 则这个设置强制使用自动生成主键，尽管一些驱动不能兼容但仍可正常工作（比如 Derby）。
+   */
   protected boolean useGeneratedKeys = false;
+  /**
+   *使用列标签代替列名。不同的驱动在这方面会有不同的表现， 具体可参考相关驱动文档或通过测试这两种不同的模式来观察所用驱动的结果。
+   */
   protected boolean useColumnLabel = true;
   //默认启用缓存
   protected boolean cacheEnabled = true;
+
+  /**
+   *指定当结果集中值为 null 的时候是否调用映射对象的 setter（map 对象时为 put）方法，这对于有 Map.keySet() 依赖或 null 值初始化的时候是有用的。注意基本类型（int、boolean等）是不能设置成 null 的。
+   */
   protected boolean callSettersOnNulls = false;
-  
+
+  /**
+   * 指定 MyBatis 增加到日志名称的前缀。
+   */
   protected String logPrefix;
+  /**
+   * 指定 MyBatis 所用日志的具体实现，未指定时将自动查找。
+   */
   protected Class <? extends Log> logImpl;
+
+  /**
+   * MyBatis 利用本地缓存机制（Local Cache）防止循环引用（circular references）和加速重复嵌套查询。
+   * 默认值为 SESSION，这种情况下会缓存一个会话中执行的所有查询。
+   * 若设置值为 STATEMENT，本地会话仅用在语句执行上，对相同 SqlSession 的不同调用将不会共享数据。
+   */
   protected LocalCacheScope localCacheScope = LocalCacheScope.SESSION;
+  /**
+   * 当没有为参数提供特定的 JDBC 类型时，为空值指定 JDBC 类型。 某些驱动需要指定列的 JDBC 类型，多数情况直接用一般类型即可，比如 NULL、VARCHAR 或 OTHER。
+   */
   protected JdbcType jdbcTypeForNull = JdbcType.OTHER;
+
+  /**
+   *指定哪个对象的方法触发一次延迟加载。
+   */
   protected Set<String> lazyLoadTriggerMethods = new HashSet<String>(Arrays.asList(new String[] { "equals", "clone", "hashCode", "toString" }));
+  /**
+   * 设置超时时间，它决定驱动等待数据库响应的秒数。
+   */
   protected Integer defaultStatementTimeout;
   //默认为简单执行器
   protected ExecutorType defaultExecutorType = ExecutorType.SIMPLE;
+  /**
+   *指定 MyBatis 应如何自动映射列到字段或属性。
+   * NONE 表示取消自动映射；
+   * PARTIAL 只会自动映射没有定义嵌套结果集映射的结果集。
+   * FULL 会自动映射任意复杂的结果集（无论是否嵌套）。
+   */
   protected AutoMappingBehavior autoMappingBehavior = AutoMappingBehavior.PARTIAL;
   //---------以上都是<settings>节点-------
 
+  /**
+   *
+   */
   protected Properties variables = new Properties();
   //对象工厂和对象包装器工厂
   protected ObjectFactory objectFactory = new DefaultObjectFactory();
@@ -131,6 +188,9 @@ public class Configuration {
 
   //默认禁用延迟加载
   protected boolean lazyLoadingEnabled = false;
+  /**
+   * 指定 Mybatis 创建具有延迟加载能力的对象所用到的代理工具。
+   */
   protected ProxyFactory proxyFactory = new JavassistProxyFactory(); // #224 Using internal Javassist instead of OGNL
 
   protected String databaseId;

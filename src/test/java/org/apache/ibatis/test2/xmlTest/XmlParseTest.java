@@ -12,7 +12,7 @@ public class XmlParseTest {
 
     @Test
     public void testGetResource(){
-        String filePath="resources/test/mybatis-config.xml";
+        String filePath="resources/setting_test.xml";
         try {
            InputStream inputStream= Resources.getResourceAsStream(filePath);
             XPathParser parser=new XPathParser(inputStream);
