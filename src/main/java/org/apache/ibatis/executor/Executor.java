@@ -33,6 +33,8 @@ import org.apache.ibatis.transaction.Transaction;
  * 执行器
  * 
  */
+
+//note:key sql执行器
 public interface Executor {
 
   //不需要ResultHandler

@@ -37,6 +37,8 @@ import org.apache.ibatis.transaction.Transaction;
  * 简单执行器
  * 
  */
+
+//note:key  简单sql执行器  包含配置信息类和事务类
 public class SimpleExecutor extends BaseExecutor {
 
   public SimpleExecutor(Configuration configuration, Transaction transaction) {

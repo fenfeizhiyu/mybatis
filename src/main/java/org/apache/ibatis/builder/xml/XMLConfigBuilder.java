@@ -84,9 +84,10 @@ public class XMLConfigBuilder extends BaseBuilder {
     this(new XPathParser(inputStream, true, props, new XMLMapperEntityResolver()), environment, props);
   }
 
+  //note:key 用XPathParser构造一个XPathParser解析mapper文件
   //上面6个构造函数最后都合流到这个函数，传入XPathParser
   private XMLConfigBuilder(XPathParser parser, String environment, Properties props) {
-    //首先调用父类初始化Configuration
+    // 首先调用父类初始化Configuration
     super(new Configuration());
     //错误上下文设置成SQL Mapper Configuration(XML文件配置),以便后面出错了报错用吧
     ErrorContext.instance().resource("SQL Mapper Configuration");
@@ -104,27 +105,30 @@ public class XMLConfigBuilder extends BaseBuilder {
       throw new BuilderException("Each XMLConfigBuilder can only be used once.");
     }
     parsed = true;
-//  <?xml version="1.0" encoding="UTF-8" ?> 
-//  <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" 
-//  "http://mybatis.org/dtd/mybatis-3-config.dtd"> 
-//  <configuration> 
-//  <environments default="development"> 
-//  <environment id="development"> 
-//  <transactionManager type="JDBC"/> 
-//  <dataSource type="POOLED"> 
-//  <property name="driver" value="${driver}"/> 
-//  <property name="url" value="${url}"/> 
-//  <property name="username" value="${username}"/> 
-//  <property name="password" value="${password}"/> 
-//  </dataSource> 
-//  </environment> 
-//  </environments>
-//  <mappers> 
-//  <mapper resource="org/mybatis/example/BlogMapper.xml"/> 
-//  </mappers> 
-//  </configuration>
+/*
+  <?xml version="1.0" encoding="UTF-8" ?>
+  <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+  <configuration>
+  <environments default="development">
+  <environment id="development">
+  <transactionManager type="JDBC"/>
+  <dataSource type="POOLED">
+  <property name="driver" value="${driver}"/>
+  <property name="url" value="${url}"/>
+  <property name="username" value="${username}"/>
+  <property name="password" value="${password}"/>
+  </dataSource>
+  </environment>
+  </environments>
+  <mappers>
+  <mapper resource="org/mybatis/example/BlogMapper.xml"/>
+  </mappers>
+  </configuration>
+  */
     
     //根节点是configuration
+    //note:yy 解析xml配置文件的根节点
     parseConfiguration(parser.evalNode("/configuration"));
     return configuration;
   }
@@ -134,26 +138,27 @@ public class XMLConfigBuilder extends BaseBuilder {
     try {
       //分步骤解析
       //issue #117 read properties first
-      //1.properties
+      //1.
+      //note:yy 1.解析属性
       propertiesElement(root.evalNode("properties"));
-      //2.类型别名
+      //note:yy 2.解析类型别名
       typeAliasesElement(root.evalNode("typeAliases"));
-      //3.插件
+      //note:yy 3.解析插件
       pluginElement(root.evalNode("plugins"));
-      //4.对象工厂
+      //note:yy 4.解析对象工厂
       objectFactoryElement(root.evalNode("objectFactory"));
-      //5.对象包装工厂
+      //note:yy 5.解析对象包装工厂
       objectWrapperFactoryElement(root.evalNode("objectWrapperFactory"));
-      //6.设置
+      //note:yy 6.解析设置
       settingsElement(root.evalNode("settings"));
       // read it after objectFactory and objectWrapperFactory issue #631
-      //7.环境
+      //note:yy 7.解析环境
       environmentsElement(root.evalNode("environments"));
-      //8.databaseIdProvider
+      //note:yy 8.解析databaseIdProvider
       databaseIdProviderElement(root.evalNode("databaseIdProvider"));
-      //9.类型处理器
+      //note:yy 9.解析类型处理器
       typeHandlerElement(root.evalNode("typeHandlers"));
-      //10.映射器
+      //note:yy 10.解析映射器
       mapperElement(root.evalNode("mappers"));
     } catch (Exception e) {
       throw new BuilderException("Error parsing SQL Mapper Configuration. Cause: " + e, e);
@@ -161,18 +166,18 @@ public class XMLConfigBuilder extends BaseBuilder {
   }
 
   //2.类型别名
-//<typeAliases>
-//  <typeAlias alias="Author" type="domain.blog.Author"/>
-//  <typeAlias alias="Blog" type="domain.blog.Blog"/>
-//  <typeAlias alias="Comment" type="domain.blog.Comment"/>
-//  <typeAlias alias="Post" type="domain.blog.Post"/>
-//  <typeAlias alias="Section" type="domain.blog.Section"/>
-//  <typeAlias alias="Tag" type="domain.blog.Tag"/>
-//</typeAliases>
-//or    
-//<typeAliases>
-//  <package name="domain.blog"/>
-//</typeAliases>  
+/*<typeAliases>
+  <typeAlias alias="Author" type="domain.blog.Author"/>
+  <typeAlias alias="Blog" type="domain.blog.Blog"/>
+  <typeAlias alias="Comment" type="domain.blog.Comment"/>
+  <typeAlias alias="Post" type="domain.blog.Post"/>
+  <typeAlias alias="Section" type="domain.blog.Section"/>
+  <typeAlias alias="Tag" type="domain.blog.Tag"/>
+</typeAliases>
+or
+<typeAliases>
+  <package name="domain.blog"/>
+</typeAliases>  */
   private void typeAliasesElement(XNode parent) {
     if (parent != null) {
       for (XNode child : parent.getChildren()) {

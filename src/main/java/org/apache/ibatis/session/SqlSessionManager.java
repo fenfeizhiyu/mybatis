@@ -35,15 +35,19 @@ import org.apache.ibatis.reflection.ExceptionUtil;
  * SqlSession管理员,可参考SqlSessionManagerTest
  *
  */
+//note:key  SqlSessionManager管理由SqlSessionFactoryBuilder生成的SqlSessionFactory
 public class SqlSessionManager implements SqlSessionFactory, SqlSession {
 
+  //note:yy SqlSessionFactory生成SqlSession
   private final SqlSessionFactory sqlSessionFactory;
   private final SqlSession sqlSessionProxy;
 
+  //note:yy 用于将SqlSession 代理与线程绑定
   private ThreadLocal<SqlSession> localSqlSession = new ThreadLocal<SqlSession>();
 
   private SqlSessionManager(SqlSessionFactory sqlSessionFactory) {
     this.sqlSessionFactory = sqlSessionFactory;
+    //note:yy 创建一个SqlSession的代理类
     this.sqlSessionProxy = (SqlSession) Proxy.newProxyInstance(
         SqlSessionFactory.class.getClassLoader(),
         new Class[]{SqlSession.class},
@@ -114,6 +118,16 @@ public class SqlSessionManager implements SqlSessionFactory, SqlSession {
     return this.localSqlSession.get() != null;
   }
 
+
+  //note:yy 提供不同的打开Session的方法
+
+  /**
+   * 带autoCommit，Connection，TransactionIsolationLeve等等参数
+   *
+   */
+
+
+
   @Override
   public SqlSession openSession() {
     return sqlSessionFactory.openSession();
@@ -159,6 +173,9 @@ public class SqlSessionManager implements SqlSessionFactory, SqlSession {
     return sqlSessionFactory.getConfiguration();
   }
 
+
+
+  //note:yy  利用sqlSessionProxy做增删改查
   @Override
   public <T> T selectOne(String statement) {
     return sqlSessionProxy.<T> selectOne(statement);

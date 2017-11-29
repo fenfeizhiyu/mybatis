@@ -94,6 +94,7 @@ import org.apache.ibatis.type.TypeHandlerRegistry;
  * 配置，里面好多配置项
  * 
  */
+//note:key Mybatis的配置信息
 public class Configuration {
 
   //环境

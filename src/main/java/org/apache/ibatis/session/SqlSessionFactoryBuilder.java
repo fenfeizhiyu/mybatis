@@ -33,6 +33,7 @@ import org.apache.ibatis.session.defaults.DefaultSqlSessionFactory;
 /**
  * @author Clinton Begin
  */
+//note:key 构建SqlSessionFactory 的工厂类，包含了解析配置文件的过程
 public class SqlSessionFactoryBuilder {
 
   //SqlSessionFactoryBuilder有9个build()方法

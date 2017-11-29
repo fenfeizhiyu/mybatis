@@ -43,6 +43,7 @@ import org.apache.ibatis.session.SqlSession;
  * 默认SqlSession实现
  *
  */
+//note:key 默认的sqlSession实现，包含由XmlConfigBuilder解析出来的配置信息，和一个Sql执行器
 public class DefaultSqlSession implements SqlSession {
 
   private Configuration configuration;
@@ -70,7 +71,7 @@ public class DefaultSqlSession implements SqlSession {
     return this.<T>selectOne(statement, null);
   }
 
-  //核心selectOne
+  //note:yy 核心 selectOne 最后还是调用SelectList
   @Override
   public <T> T selectOne(String statement, Object parameter) {
     // Popular vote was to return null on 0 results and throw exception on too many.
@@ -124,7 +125,7 @@ public class DefaultSqlSession implements SqlSession {
     return this.selectList(statement, parameter, RowBounds.DEFAULT);
   }
 
-  //核心selectList
+  //note:yy  核心selectList
   @Override
   public <E> List<E> selectList(String statement, Object parameter, RowBounds rowBounds) {
     try {

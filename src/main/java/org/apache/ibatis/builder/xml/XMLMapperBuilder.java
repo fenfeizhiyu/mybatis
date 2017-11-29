@@ -54,6 +54,8 @@ import org.apache.ibatis.type.TypeHandler;
  * XML映射构建器，建造者模式,继承BaseBuilder
  *
  */
+
+//note:key Mapper文件解析器
 public class XMLMapperBuilder extends BaseBuilder {
 
   private XPathParser parser;
@@ -93,6 +95,7 @@ public class XMLMapperBuilder extends BaseBuilder {
     this.resource = resource;
   }
 
+  //note:key 解析Mapper文件
   //解析
   public void parse() {
     //如果没有加载过再加载，防止重复加载

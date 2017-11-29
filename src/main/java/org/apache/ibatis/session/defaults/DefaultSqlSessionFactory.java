@@ -38,6 +38,8 @@ import org.apache.ibatis.transaction.managed.ManagedTransactionFactory;
  * 默认的SqlSessionFactory
  * 
  */
+
+//note:key  默认的SqlSessionFactory 接受XmlConfigBuilder解析出的Configuration信息
 public class DefaultSqlSessionFactory implements SqlSessionFactory {
 
   private final Configuration configuration;
@@ -94,6 +96,7 @@ public class DefaultSqlSessionFactory implements SqlSessionFactory {
     return configuration;
   }
 
+  //note:yy 从数据源打开一个SqlSession
   private SqlSession openSessionFromDataSource(ExecutorType execType, TransactionIsolationLevel level, boolean autoCommit) {
     Transaction tx = null;
     try {
@@ -115,6 +118,8 @@ public class DefaultSqlSessionFactory implements SqlSessionFactory {
     }
   }
 
+
+  //note:yy  从一个数据库连接打开一个SqlSession
   private SqlSession openSessionFromConnection(ExecutorType execType, Connection connection) {
     try {
       boolean autoCommit;

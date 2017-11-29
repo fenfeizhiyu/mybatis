@@ -22,6 +22,7 @@ package org.apache.ibatis.executor;
  * 
  * 错误上下文
  */
+//note:key 错误信息上下文
 public class ErrorContext {
   // 获得 \n 不同的操作系统不一样
   private static final String LINE_SEPARATOR = System.getProperty("line.separator","\n");

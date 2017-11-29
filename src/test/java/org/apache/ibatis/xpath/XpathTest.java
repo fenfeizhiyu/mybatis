@@ -21,7 +21,8 @@ public class XpathTest {
      */
     public void testXpathParse(){
         ArrayList result = new ArrayList();
-        String filePath="resources/test/mybatis-config.xml";
+        String filePath="resources/book.xml";
+        //用 JAXP 解析文档
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         factory.setNamespaceAware(true); // never forget this!
         DocumentBuilder builder = null;
@@ -29,6 +30,7 @@ public class XpathTest {
             InputStream inputStream= Resources.getResourceAsStream(filePath);
             builder = factory.newDocumentBuilder();
             Document doc = builder.parse(inputStream);
+            //接下来创建 XPathFactory：然后使用这个工厂创建 XPath 对象
             XPathFactory xPathFactory = XPathFactory.newInstance();
             XPath xpath = xPathFactory.newXPath();
         } catch (Exception e) {
