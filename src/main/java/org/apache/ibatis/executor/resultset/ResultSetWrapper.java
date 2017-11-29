@@ -38,6 +38,8 @@ import org.apache.ibatis.type.UnknownTypeHandler;
 /**
  * @author Iwao AVE!
  */
+
+//note:key  包装查询出来的结果集
 class ResultSetWrapper {
 
   private final ResultSet resultSet;
@@ -55,6 +57,7 @@ class ResultSetWrapper {
     this.resultSet = rs;
     final ResultSetMetaData metaData = rs.getMetaData();
     final int columnCount = metaData.getColumnCount();
+    //note:yy  获取查询结果集的列名，和对应的数据类型
     for (int i = 1; i <= columnCount; i++) {
       columnNames.add(configuration.isUseColumnLabel() ? metaData.getColumnLabel(i) : metaData.getColumnName(i));
       jdbcTypes.add(JdbcType.forCode(metaData.getColumnType(i)));

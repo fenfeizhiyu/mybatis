@@ -26,6 +26,7 @@ import java.util.Map;
  * JDBC类型枚举
  * 
  */
+//note:key  将sql类型和java类型对应起来
 public enum JdbcType {
   /*
    * This is added to enable basic support for the
