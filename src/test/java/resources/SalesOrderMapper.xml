@@ -1,0 +1,1053 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+"http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<!--对sales_order表的操作 -->
+<mapper namespace="SalesOrder">
+
+	<resultMap id="RM_SalesOrder" type="org.apache.ibatis.model.SalesOrder">
+        <result property="id" column="ID"/>
+        <result property="userId" column="USER_ID"/>
+        <result property="userOrigin" column="USER_ORIGIN"/>
+        <result property="userName" column="USER_NAME"/>
+        <result property="userCode" column="USER_CODE"/>
+        <result property="userPhone" column="USER_PHONE"/>
+        <result property="userEmail" column="USER_EMAIL"/>
+        <result property="sellerId" column="SELLER_ID"/>
+        <result property="orderCode" column="ORDER_CODE"/>
+        <result property="orderType" column="ORDER_TYPE"/>
+        <result property="orderStatus" column="ORDER_STATUS"/>
+        <result property="orderSource" column="ORDER_SOURCE"/>
+        <result property="orderAmount" column="ORDER_AMOUNT"/>
+        <result property="orderPoint" column="ORDER_POINT"/>
+        <result property="orderRemark" column="ORDER_REMARK"/>
+        <result property="orderCreateTime" column="ORDER_CREATE_TIME"/>
+        <result property="orderConfirmTime" column="ORDER_CONFIRM_TIME"/>
+        <result property="orderPaymentTime" column="ORDER_PAYMENT_TIME"/>
+        <result property="orderDeliveryTime" column="ORDER_DELIVERY_TIME"/>
+        <result property="orderReceiveTime" column="ORDER_RECEIVE_TIME"/>
+        <result property="orderBusinessType" column="ORDER_BUSINESS_TYPE"/>
+        <result property="orderProductNum" column="ORDER_PRODUCT_NUM"/>
+        <result property="orderProductFee" column="ORDER_PRODUCT_FEE"/>
+        <result property="rebateFee" column="REBATE_FEE"/>
+        <result property="couponFee" column="COUPON_FEE"/>
+        <result property="deliveryFee" column="DELIVERY_FEE"/>
+        <result property="discountFee" column="DISCOUNT_FEE"/>
+        <result property="pointFee" column="POINT_FEE"/>
+        <result property="paymentFee" column="PAYMENT_FEE"/>
+        <result property="paymentMethod" column="PAYMENT_METHOD"/>
+        <result property="paymentGatewayId" column="PAYMENT_GATEWAY_ID"/>
+        <result property="paymentCode" column="PAYMENT_CODE"/>
+        <result property="paymentStatus" column="PAYMENT_STATUS"/>
+        <result property="receiverId" column="RECEIVER_ID"/>
+        <result property="receiverName" column="RECEIVER_NAME"/>
+        <result property="receiverCountryId" column="RECEIVER_COUNTRY_ID"/>
+        <result property="receiverProvinceId" column="RECEIVER_PROVINCE_ID"/>
+        <result property="receiverCityId" column="RECEIVER_CITY_ID"/>
+        <result property="receiverCountyId" column="RECEIVER_COUNTY_ID"/>
+        <result property="receiverTownId" column="RECEIVER_TOWN_ID"/>
+        <result property="receiverAddress" column="RECEIVER_ADDRESS"/>
+        <result property="receiverPostCode" column="RECEIVER_POST_CODE"/>
+        <result property="receiverPhone" column="RECEIVER_PHONE"/>
+        <result property="receiverMobile" column="RECEIVER_MOBILE"/>
+        <result property="deliveryMethod" column="DELIVERY_METHOD"/>
+        <result property="deliveryCompanyId" column="DELIVERY_COMPANY_ID"/>
+        <result property="deliveryCompanyName" column="DELIVERY_COMPANY_NAME"/>
+        <result property="deliveryCode" column="DELIVERY_CODE"/>
+        <result property="deliveryCompanyUrl" column="DELIVERY_COMPANY_URL"/>
+        <result property="deliveryRemark" column="DELIVERY_REMARK"/>
+        <result property="invoiceId" column="INVOICE_ID"/>
+        <result property="createTime" column="CREATE_TIME"/>
+        <result property="updateTime" column="UPDATE_TIME"/>
+        <result property="batchOrderCode" column="BATCH_ORDER_CODE"/>
+        <result property="isDeleted" column="IS_DELETED"/>
+        <result property="orderFinanceTime" column="ORDER_FINANCE_TIME"/>
+        <result property="orderCancelTime" column="ORDER_CANCEL_TIME"/>
+        <result property="isBatch" column="IS_BATCH"/>
+        <result property="newUser" column="NEW_USER"/>
+        <result property="subSellerId" column="SUB_SELLER_ID"/>
+        <result property="pushStatus" column="PUSH_STATUS"/>
+        <result property="huodongId" column="HUODONG_ID"/>
+        <result property="xunleiId" column="XUNLEI_ID"/>
+        <result property="exceptionType" column="EXCEPTION_TYPE"/>
+        <result property="statementStatus" column="STATEMENT_STATUS"/>
+        <result property="statementTime" column="STATEMENT_TIME"/>
+        <result property="outCode" column="OUT_CODE"/>
+        <result property="tuanId" column="TUAN_ID"/>
+        <result property="orderTuanTime" column="ORDER_TUAN_TIME"/>
+        <result property="orderRefundStatus" column="ORDER_REFUND_STATUS"/>
+        <result property="isReviewed" column="IS_REVIEWED"/>
+        <result property="totalTax" column="TOTAL_TAX"/>
+        <result property="sellerRemark" column="SELLER_REMARK"/>
+        <result property="lotterySucFlag" column="LOTTERY_SUC_FLAG"/>
+        <result property="lotteryOpenTime" column="LOTTERY_OPEN_TIME"/>
+        <result property="userCouponId" column="USER_COUPON_ID"/>
+        <result property="sellerComments" column="SELLER_COMMENTS"/>
+        <result property="remarkMsp" column="REMARK_MSP"/>
+        <result property="orderStatusUnshipTime" column="ORDER_STATUS_UNSHIP_TIME"/>
+        <result property="orderFreeType" column="ORDER_FREE_TYPE"/>
+        <result property="appMessageStatus" column="APP_MESSAGE_STATUS"/>
+        <result property="outBuyStatus" column="OUT_BUY_STATUS"/>
+        <result property="identityCardFront" column="IDENTITY_CARD_FRONT"/>
+        <result property="identityCardBack" column="IDENTITY_CARD_BACK"/>
+        <result property="totalWeight" column="TOTAL_WEIGHT"/>
+        <result property="receiverIdentityCardNo" column="RECEIVER_IDENTITY_CARD_NO"/>
+        <result property="sellerShopName" column="SELLER_SHOP_NAME"/>
+        <result property="sellerShopLogo" column="SELLER_SHOP_LOGO"/>
+        <result property="shopHeadPic" column="SHOP_HEAD_PIC"/>
+        <result property="haitaoLocal" column="HAITAO_LOCAL"/>
+        <result property="mulitiplyDiscountFee" column="MULITIPLY_DISCOUNT_FEE"/>
+        <result property="otherPushStatus" column="other_push_status"/>
+        <result property="haitaoOtherfee" column="HAITAO_OTHERFEE"/>
+        <result property="haitaoPromotionAmount" column="HAITAO_PROMOTION_AMOUNT"/>
+        <result property="haitaoPlatform" column="HAITAO_PLATFORM"/>
+        <result property="inSure" column="IN_SURE"/>
+        <result property="page" column="page"/>
+        <result property="module" column="module"/>
+        <result property="haitaoPushStatus" column="haitao_push_status"/>
+        <result property="freeReceiveId" column="free_receive_id"/>
+        <result property="taxDiscountFee" column="tax_discount_fee"/>
+        <result property="haitaoOrderBuyTime" column="haitao_order_buy_time"/>
+        <result property="fenmiSysId" column="fenmi_sys_id"/>
+        <result property="orderComment" column="order_comment"/>
+        <result property="haitaoTaxChannelType" column="haitao_tax_channel_type"/>
+	</resultMap>
+	
+	<!-- 用于select查询公用抽取的列 -->
+	<sql id="SalesOrder_columns">
+	    <![CDATA[
+        	ID,
+        	USER_ID,
+        	USER_ORIGIN,
+        	USER_NAME,
+        	USER_CODE,
+        	USER_PHONE,
+        	USER_EMAIL,
+        	SELLER_ID,
+        	ORDER_CODE,
+        	ORDER_TYPE,
+        	ORDER_STATUS,
+        	ORDER_SOURCE,
+        	ORDER_AMOUNT,
+        	ORDER_POINT,
+        	ORDER_REMARK,
+        	ORDER_CREATE_TIME,
+        	ORDER_CONFIRM_TIME,
+        	ORDER_PAYMENT_TIME,
+        	ORDER_DELIVERY_TIME,
+        	ORDER_RECEIVE_TIME,
+        	ORDER_BUSINESS_TYPE,
+        	ORDER_PRODUCT_NUM,
+        	ORDER_PRODUCT_FEE,
+        	REBATE_FEE,
+        	COUPON_FEE,
+        	DELIVERY_FEE,
+        	DISCOUNT_FEE,
+        	POINT_FEE,
+        	PAYMENT_FEE,
+        	PAYMENT_METHOD,
+        	PAYMENT_GATEWAY_ID,
+        	PAYMENT_CODE,
+        	PAYMENT_STATUS,
+        	RECEIVER_ID,
+        	RECEIVER_NAME,
+        	RECEIVER_COUNTRY_ID,
+        	RECEIVER_PROVINCE_ID,
+        	RECEIVER_CITY_ID,
+        	RECEIVER_COUNTY_ID,
+        	RECEIVER_TOWN_ID,
+        	RECEIVER_ADDRESS,
+        	RECEIVER_POST_CODE,
+        	RECEIVER_PHONE,
+        	RECEIVER_MOBILE,
+        	DELIVERY_METHOD,
+        	DELIVERY_COMPANY_ID,
+        	DELIVERY_COMPANY_NAME,
+        	DELIVERY_CODE,
+        	DELIVERY_COMPANY_URL,
+        	DELIVERY_REMARK,
+        	INVOICE_ID,
+        	CREATE_TIME,
+        	UPDATE_TIME,
+        	BATCH_ORDER_CODE,
+        	IS_DELETED,
+        	ORDER_FINANCE_TIME,
+        	ORDER_CANCEL_TIME,
+        	IS_BATCH,
+        	NEW_USER,
+        	SUB_SELLER_ID,
+        	PUSH_STATUS,
+        	HUODONG_ID,
+        	XUNLEI_ID,
+        	EXCEPTION_TYPE,
+        	STATEMENT_STATUS,
+        	STATEMENT_TIME,
+        	OUT_CODE,
+        	TUAN_ID,
+        	ORDER_TUAN_TIME,
+        	ORDER_REFUND_STATUS,
+        	IS_REVIEWED,
+        	TOTAL_TAX,
+        	SELLER_REMARK,
+        	LOTTERY_SUC_FLAG,
+        	LOTTERY_OPEN_TIME,
+        	USER_COUPON_ID,
+        	SELLER_COMMENTS,
+        	REMARK_MSP,
+        	ORDER_STATUS_UNSHIP_TIME,
+        	ORDER_FREE_TYPE,
+        	APP_MESSAGE_STATUS,
+        	OUT_BUY_STATUS,
+        	IDENTITY_CARD_FRONT,
+        	IDENTITY_CARD_BACK,
+        	TOTAL_WEIGHT,
+        	RECEIVER_IDENTITY_CARD_NO,
+        	SELLER_SHOP_NAME,
+        	SELLER_SHOP_LOGO,
+        	SHOP_HEAD_PIC,
+        	HAITAO_LOCAL,
+        	MULITIPLY_DISCOUNT_FEE,
+        	other_push_status,
+        	HAITAO_OTHERFEE,
+        	HAITAO_PROMOTION_AMOUNT,
+        	HAITAO_PLATFORM,
+        	IN_SURE,
+        	page,
+        	module,
+        	haitao_push_status,
+        	free_receive_id,
+        	tax_discount_fee,
+        	haitao_order_buy_time,
+        	fenmi_sys_id,
+        	order_comment,
+        	haitao_tax_channel_type
+	    ]]>
+	</sql>
+	
+	<!-- 用于where查询公用抽取的列 -->
+	<sql id="SalesOrder_condition">
+		<where>
+        <trim suffix="" suffixOverrides="and">
+        	<if test="id!=null ">ID = #{id}  and</if>
+        	<if test="userId!=null ">USER_ID = #{userId}  and</if>
+        	<if test="userOrigin!=null ">USER_ORIGIN = #{userOrigin}  and</if>
+        	<if test="userName!=null ">USER_NAME = #{userName}  and</if>
+        	<if test="userCode!=null ">USER_CODE = #{userCode}  and</if>
+        	<if test="userPhone!=null ">USER_PHONE = #{userPhone}  and</if>
+        	<if test="userEmail!=null ">USER_EMAIL = #{userEmail}  and</if>
+        	<if test="sellerId!=null ">SELLER_ID = #{sellerId}  and</if>
+        	<if test="orderCode!=null ">ORDER_CODE = #{orderCode}  and</if>
+        	<if test="orderType!=null ">ORDER_TYPE = #{orderType}  and</if>
+        	<if test="orderStatus!=null ">ORDER_STATUS = #{orderStatus}  and</if>
+        	<if test="orderSource!=null ">ORDER_SOURCE = #{orderSource}  and</if>
+        	<if test="orderAmount!=null ">ORDER_AMOUNT = #{orderAmount}  and</if>
+        	<if test="orderPoint!=null ">ORDER_POINT = #{orderPoint}  and</if>
+        	<if test="orderRemark!=null ">ORDER_REMARK = #{orderRemark}  and</if>
+        	<if test="orderCreateTime!=null ">ORDER_CREATE_TIME = #{orderCreateTime}  and</if>
+        	<if test="orderConfirmTime!=null ">ORDER_CONFIRM_TIME = #{orderConfirmTime}  and</if>
+        	<if test="orderPaymentTime!=null ">ORDER_PAYMENT_TIME = #{orderPaymentTime}  and</if>
+        	<if test="orderDeliveryTime!=null ">ORDER_DELIVERY_TIME = #{orderDeliveryTime}  and</if>
+        	<if test="orderReceiveTime!=null ">ORDER_RECEIVE_TIME = #{orderReceiveTime}  and</if>
+        	<if test="orderBusinessType!=null ">ORDER_BUSINESS_TYPE = #{orderBusinessType}  and</if>
+        	<if test="orderProductNum!=null ">ORDER_PRODUCT_NUM = #{orderProductNum}  and</if>
+        	<if test="orderProductFee!=null ">ORDER_PRODUCT_FEE = #{orderProductFee}  and</if>
+        	<if test="rebateFee!=null ">REBATE_FEE = #{rebateFee}  and</if>
+        	<if test="couponFee!=null ">COUPON_FEE = #{couponFee}  and</if>
+        	<if test="deliveryFee!=null ">DELIVERY_FEE = #{deliveryFee}  and</if>
+        	<if test="discountFee!=null ">DISCOUNT_FEE = #{discountFee}  and</if>
+        	<if test="pointFee!=null ">POINT_FEE = #{pointFee}  and</if>
+        	<if test="paymentFee!=null ">PAYMENT_FEE = #{paymentFee}  and</if>
+        	<if test="paymentMethod!=null ">PAYMENT_METHOD = #{paymentMethod}  and</if>
+        	<if test="paymentGatewayId!=null ">PAYMENT_GATEWAY_ID = #{paymentGatewayId}  and</if>
+        	<if test="paymentCode!=null ">PAYMENT_CODE = #{paymentCode}  and</if>
+        	<if test="paymentStatus!=null ">PAYMENT_STATUS = #{paymentStatus}  and</if>
+        	<if test="receiverId!=null ">RECEIVER_ID = #{receiverId}  and</if>
+        	<if test="receiverName!=null ">RECEIVER_NAME = #{receiverName}  and</if>
+        	<if test="receiverCountryId!=null ">RECEIVER_COUNTRY_ID = #{receiverCountryId}  and</if>
+        	<if test="receiverProvinceId!=null ">RECEIVER_PROVINCE_ID = #{receiverProvinceId}  and</if>
+        	<if test="receiverCityId!=null ">RECEIVER_CITY_ID = #{receiverCityId}  and</if>
+        	<if test="receiverCountyId!=null ">RECEIVER_COUNTY_ID = #{receiverCountyId}  and</if>
+        	<if test="receiverTownId!=null ">RECEIVER_TOWN_ID = #{receiverTownId}  and</if>
+        	<if test="receiverAddress!=null ">RECEIVER_ADDRESS = #{receiverAddress}  and</if>
+        	<if test="receiverPostCode!=null ">RECEIVER_POST_CODE = #{receiverPostCode}  and</if>
+        	<if test="receiverPhone!=null ">RECEIVER_PHONE = #{receiverPhone}  and</if>
+        	<if test="receiverMobile!=null ">RECEIVER_MOBILE = #{receiverMobile}  and</if>
+        	<if test="deliveryMethod!=null ">DELIVERY_METHOD = #{deliveryMethod}  and</if>
+        	<if test="deliveryCompanyId!=null ">DELIVERY_COMPANY_ID = #{deliveryCompanyId}  and</if>
+        	<if test="deliveryCompanyName!=null ">DELIVERY_COMPANY_NAME = #{deliveryCompanyName}  and</if>
+        	<if test="deliveryCode!=null ">DELIVERY_CODE = #{deliveryCode}  and</if>
+        	<if test="deliveryCompanyUrl!=null ">DELIVERY_COMPANY_URL = #{deliveryCompanyUrl}  and</if>
+        	<if test="deliveryRemark!=null ">DELIVERY_REMARK = #{deliveryRemark}  and</if>
+        	<if test="invoiceId!=null ">INVOICE_ID = #{invoiceId}  and</if>
+        	<if test="createTime!=null ">CREATE_TIME = #{createTime}  and</if>
+        	<if test="updateTime!=null ">UPDATE_TIME = #{updateTime}  and</if>
+        	<if test="batchOrderCode!=null ">BATCH_ORDER_CODE = #{batchOrderCode}  and</if>
+        	<if test="isDeleted!=null ">IS_DELETED = #{isDeleted}  and</if>
+        	<if test="orderFinanceTime!=null ">ORDER_FINANCE_TIME = #{orderFinanceTime}  and</if>
+        	<if test="orderCancelTime!=null ">ORDER_CANCEL_TIME = #{orderCancelTime}  and</if>
+        	<if test="isBatch!=null ">IS_BATCH = #{isBatch}  and</if>
+        	<if test="newUser!=null ">NEW_USER = #{newUser}  and</if>
+        	<if test="subSellerId!=null ">SUB_SELLER_ID = #{subSellerId}  and</if>
+        	<if test="pushStatus!=null ">PUSH_STATUS = #{pushStatus}  and</if>
+        	<if test="huodongId!=null ">HUODONG_ID = #{huodongId}  and</if>
+        	<if test="xunleiId!=null ">XUNLEI_ID = #{xunleiId}  and</if>
+        	<if test="exceptionType!=null ">EXCEPTION_TYPE = #{exceptionType}  and</if>
+        	<if test="statementStatus!=null ">STATEMENT_STATUS = #{statementStatus}  and</if>
+        	<if test="statementTime!=null ">STATEMENT_TIME = #{statementTime}  and</if>
+        	<if test="outCode!=null ">OUT_CODE = #{outCode}  and</if>
+        	<if test="tuanId!=null ">TUAN_ID = #{tuanId}  and</if>
+        	<if test="orderTuanTime!=null ">ORDER_TUAN_TIME = #{orderTuanTime}  and</if>
+        	<if test="orderRefundStatus!=null ">ORDER_REFUND_STATUS = #{orderRefundStatus}  and</if>
+        	<if test="isReviewed!=null ">IS_REVIEWED = #{isReviewed}  and</if>
+        	<if test="totalTax!=null ">TOTAL_TAX = #{totalTax}  and</if>
+        	<if test="sellerRemark!=null ">SELLER_REMARK = #{sellerRemark}  and</if>
+        	<if test="lotterySucFlag!=null ">LOTTERY_SUC_FLAG = #{lotterySucFlag}  and</if>
+        	<if test="lotteryOpenTime!=null ">LOTTERY_OPEN_TIME = #{lotteryOpenTime}  and</if>
+        	<if test="userCouponId!=null ">USER_COUPON_ID = #{userCouponId}  and</if>
+        	<if test="sellerComments!=null ">SELLER_COMMENTS = #{sellerComments}  and</if>
+        	<if test="remarkMsp!=null ">REMARK_MSP = #{remarkMsp}  and</if>
+        	<if test="orderStatusUnshipTime!=null ">ORDER_STATUS_UNSHIP_TIME = #{orderStatusUnshipTime}  and</if>
+        	<if test="orderFreeType!=null ">ORDER_FREE_TYPE = #{orderFreeType}  and</if>
+        	<if test="appMessageStatus!=null ">APP_MESSAGE_STATUS = #{appMessageStatus}  and</if>
+        	<if test="outBuyStatus!=null ">OUT_BUY_STATUS = #{outBuyStatus}  and</if>
+        	<if test="identityCardFront!=null ">IDENTITY_CARD_FRONT = #{identityCardFront}  and</if>
+        	<if test="identityCardBack!=null ">IDENTITY_CARD_BACK = #{identityCardBack}  and</if>
+        	<if test="totalWeight!=null ">TOTAL_WEIGHT = #{totalWeight}  and</if>
+        	<if test="receiverIdentityCardNo!=null ">RECEIVER_IDENTITY_CARD_NO = #{receiverIdentityCardNo}  and</if>
+        	<if test="sellerShopName!=null ">SELLER_SHOP_NAME = #{sellerShopName}  and</if>
+        	<if test="sellerShopLogo!=null ">SELLER_SHOP_LOGO = #{sellerShopLogo}  and</if>
+        	<if test="shopHeadPic!=null ">SHOP_HEAD_PIC = #{shopHeadPic}  and</if>
+        	<if test="haitaoLocal!=null ">HAITAO_LOCAL = #{haitaoLocal}  and</if>
+        	<if test="mulitiplyDiscountFee!=null ">MULITIPLY_DISCOUNT_FEE = #{mulitiplyDiscountFee}  and</if>
+        	<if test="otherPushStatus!=null ">other_push_status = #{otherPushStatus}  and</if>
+        	<if test="haitaoOtherfee!=null ">HAITAO_OTHERFEE = #{haitaoOtherfee}  and</if>
+        	<if test="haitaoPromotionAmount!=null ">HAITAO_PROMOTION_AMOUNT = #{haitaoPromotionAmount}  and</if>
+        	<if test="haitaoPlatform!=null ">HAITAO_PLATFORM = #{haitaoPlatform}  and</if>
+        	<if test="inSure!=null ">IN_SURE = #{inSure}  and</if>
+        	<if test="page!=null ">page = #{page}  and</if>
+        	<if test="module!=null ">module = #{module}  and</if>
+        	<if test="haitaoPushStatus!=null ">haitao_push_status = #{haitaoPushStatus}  and</if>
+        	<if test="freeReceiveId!=null ">free_receive_id = #{freeReceiveId}  and</if>
+        	<if test="taxDiscountFee!=null ">tax_discount_fee = #{taxDiscountFee}  and</if>
+        	<if test="haitaoOrderBuyTime!=null ">haitao_order_buy_time = #{haitaoOrderBuyTime}  and</if>
+        	<if test="fenmiSysId!=null ">fenmi_sys_id = #{fenmiSysId}  and</if>
+        	<if test="orderComment!=null ">order_comment = #{orderComment}  and</if>
+        	<if test="haitaoTaxChannelType!=null ">haitao_tax_channel_type = #{haitaoTaxChannelType} </if>
+        </trim>
+		</where>
+	</sql>
+   
+    
+	<!-- 根据动态条件查询表sales_order数据-->
+	<select id="SalesOrder_getByObj"  resultMap="RM_SalesOrder">
+		SELECT
+		<include refid="SalesOrder_columns" />
+		FROM sales_order 
+		<include refid="SalesOrder_condition"/>
+		
+	</select>
+	
+	<!-- 根据动态条件查询表sales_order的记录数-->
+	<select id="SalesOrder_getCount" resultType="java.lang.Integer">
+		SELECT 
+		COUNT(*) 
+		FROM sales_order 
+		<include refid="SalesOrder_condition"/>
+	</select>
+	
+	<!-- 根据ID查询表sales_order -->
+    <select id="SalesOrder_getById" resultMap="RM_SalesOrder">
+		SELECT <include refid="SalesOrder_columns" />
+		    FROM sales_order 
+	    WHERE 
+        ID = #{id} 
+	</select>
+      
+	<!-- 向sales_order表中插入单个记录 -->
+	<insert id="SalesOrder_insert" useGeneratedKeys ="true" keyProperty="id"> 
+        INSERT INTO sales_order (
+        <trim suffix="" suffixOverrides=",">
+	             <if test="id!=null">ID,</if>
+	             <if test="userId!=null">USER_ID,</if>
+	             <if test="userOrigin!=null">USER_ORIGIN,</if>
+	             <if test="userName!=null">USER_NAME,</if>
+	             <if test="userCode!=null">USER_CODE,</if>
+	             <if test="userPhone!=null">USER_PHONE,</if>
+	             <if test="userEmail!=null">USER_EMAIL,</if>
+	             <if test="sellerId!=null">SELLER_ID,</if>
+	             <if test="orderCode!=null">ORDER_CODE,</if>
+	             <if test="orderType!=null">ORDER_TYPE,</if>
+	             <if test="orderStatus!=null">ORDER_STATUS,</if>
+	             <if test="orderSource!=null">ORDER_SOURCE,</if>
+	             <if test="orderAmount!=null">ORDER_AMOUNT,</if>
+	             <if test="orderPoint!=null">ORDER_POINT,</if>
+	             <if test="orderRemark!=null">ORDER_REMARK,</if>
+	             <if test="orderCreateTime!=null">ORDER_CREATE_TIME,</if>
+	             <if test="orderConfirmTime!=null">ORDER_CONFIRM_TIME,</if>
+	             <if test="orderPaymentTime!=null">ORDER_PAYMENT_TIME,</if>
+	             <if test="orderDeliveryTime!=null">ORDER_DELIVERY_TIME,</if>
+	             <if test="orderReceiveTime!=null">ORDER_RECEIVE_TIME,</if>
+	             <if test="orderBusinessType!=null">ORDER_BUSINESS_TYPE,</if>
+	             <if test="orderProductNum!=null">ORDER_PRODUCT_NUM,</if>
+	             <if test="orderProductFee!=null">ORDER_PRODUCT_FEE,</if>
+	             <if test="rebateFee!=null">REBATE_FEE,</if>
+	             <if test="couponFee!=null">COUPON_FEE,</if>
+	             <if test="deliveryFee!=null">DELIVERY_FEE,</if>
+	             <if test="discountFee!=null">DISCOUNT_FEE,</if>
+	             <if test="pointFee!=null">POINT_FEE,</if>
+	             <if test="paymentFee!=null">PAYMENT_FEE,</if>
+	             <if test="paymentMethod!=null">PAYMENT_METHOD,</if>
+	             <if test="paymentGatewayId!=null">PAYMENT_GATEWAY_ID,</if>
+	             <if test="paymentCode!=null">PAYMENT_CODE,</if>
+	             <if test="paymentStatus!=null">PAYMENT_STATUS,</if>
+	             <if test="receiverId!=null">RECEIVER_ID,</if>
+	             <if test="receiverName!=null">RECEIVER_NAME,</if>
+	             <if test="receiverCountryId!=null">RECEIVER_COUNTRY_ID,</if>
+	             <if test="receiverProvinceId!=null">RECEIVER_PROVINCE_ID,</if>
+	             <if test="receiverCityId!=null">RECEIVER_CITY_ID,</if>
+	             <if test="receiverCountyId!=null">RECEIVER_COUNTY_ID,</if>
+	             <if test="receiverTownId!=null">RECEIVER_TOWN_ID,</if>
+	             <if test="receiverAddress!=null">RECEIVER_ADDRESS,</if>
+	             <if test="receiverPostCode!=null">RECEIVER_POST_CODE,</if>
+	             <if test="receiverPhone!=null">RECEIVER_PHONE,</if>
+	             <if test="receiverMobile!=null">RECEIVER_MOBILE,</if>
+	             <if test="deliveryMethod!=null">DELIVERY_METHOD,</if>
+	             <if test="deliveryCompanyId!=null">DELIVERY_COMPANY_ID,</if>
+	             <if test="deliveryCompanyName!=null">DELIVERY_COMPANY_NAME,</if>
+	             <if test="deliveryCode!=null">DELIVERY_CODE,</if>
+	             <if test="deliveryCompanyUrl!=null">DELIVERY_COMPANY_URL,</if>
+	             <if test="deliveryRemark!=null">DELIVERY_REMARK,</if>
+	             <if test="invoiceId!=null">INVOICE_ID,</if>
+	             <if test="createTime!=null">CREATE_TIME,</if>
+	             <if test="updateTime!=null">UPDATE_TIME,</if>
+	             <if test="batchOrderCode!=null">BATCH_ORDER_CODE,</if>
+	             <if test="isDeleted!=null">IS_DELETED,</if>
+	             <if test="orderFinanceTime!=null">ORDER_FINANCE_TIME,</if>
+	             <if test="orderCancelTime!=null">ORDER_CANCEL_TIME,</if>
+	             <if test="isBatch!=null">IS_BATCH,</if>
+	             <if test="newUser!=null">NEW_USER,</if>
+	             <if test="subSellerId!=null">SUB_SELLER_ID,</if>
+	             <if test="pushStatus!=null">PUSH_STATUS,</if>
+	             <if test="huodongId!=null">HUODONG_ID,</if>
+	             <if test="xunleiId!=null">XUNLEI_ID,</if>
+	             <if test="exceptionType!=null">EXCEPTION_TYPE,</if>
+	             <if test="statementStatus!=null">STATEMENT_STATUS,</if>
+	             <if test="statementTime!=null">STATEMENT_TIME,</if>
+	             <if test="outCode!=null">OUT_CODE,</if>
+	             <if test="tuanId!=null">TUAN_ID,</if>
+	             <if test="orderTuanTime!=null">ORDER_TUAN_TIME,</if>
+	             <if test="orderRefundStatus!=null">ORDER_REFUND_STATUS,</if>
+	             <if test="isReviewed!=null">IS_REVIEWED,</if>
+	             <if test="totalTax!=null">TOTAL_TAX,</if>
+	             <if test="sellerRemark!=null">SELLER_REMARK,</if>
+	             <if test="lotterySucFlag!=null">LOTTERY_SUC_FLAG,</if>
+	             <if test="lotteryOpenTime!=null">LOTTERY_OPEN_TIME,</if>
+	             <if test="userCouponId!=null">USER_COUPON_ID,</if>
+	             <if test="sellerComments!=null">SELLER_COMMENTS,</if>
+	             <if test="remarkMsp!=null">REMARK_MSP,</if>
+	             <if test="orderStatusUnshipTime!=null">ORDER_STATUS_UNSHIP_TIME,</if>
+	             <if test="orderFreeType!=null">ORDER_FREE_TYPE,</if>
+	             <if test="appMessageStatus!=null">APP_MESSAGE_STATUS,</if>
+	             <if test="outBuyStatus!=null">OUT_BUY_STATUS,</if>
+	             <if test="identityCardFront!=null">IDENTITY_CARD_FRONT,</if>
+	             <if test="identityCardBack!=null">IDENTITY_CARD_BACK,</if>
+	             <if test="totalWeight!=null">TOTAL_WEIGHT,</if>
+	             <if test="receiverIdentityCardNo!=null">RECEIVER_IDENTITY_CARD_NO,</if>
+	             <if test="sellerShopName!=null">SELLER_SHOP_NAME,</if>
+	             <if test="sellerShopLogo!=null">SELLER_SHOP_LOGO,</if>
+	             <if test="shopHeadPic!=null">SHOP_HEAD_PIC,</if>
+	             <if test="haitaoLocal!=null">HAITAO_LOCAL,</if>
+	             <if test="mulitiplyDiscountFee!=null">MULITIPLY_DISCOUNT_FEE,</if>
+	             <if test="otherPushStatus!=null">other_push_status,</if>
+	             <if test="haitaoOtherfee!=null">HAITAO_OTHERFEE,</if>
+	             <if test="haitaoPromotionAmount!=null">HAITAO_PROMOTION_AMOUNT,</if>
+	             <if test="haitaoPlatform!=null">HAITAO_PLATFORM,</if>
+	             <if test="inSure!=null">IN_SURE,</if>
+	             <if test="page!=null">page,</if>
+	             <if test="module!=null">module,</if>
+	             <if test="haitaoPushStatus!=null">haitao_push_status,</if>
+	             <if test="freeReceiveId!=null">free_receive_id,</if>
+	             <if test="taxDiscountFee!=null">tax_discount_fee,</if>
+	             <if test="haitaoOrderBuyTime!=null">haitao_order_buy_time,</if>
+	             <if test="fenmiSysId!=null">fenmi_sys_id,</if>
+	             <if test="orderComment!=null">order_comment,</if>
+	             <if test="haitaoTaxChannelType!=null">haitao_tax_channel_type</if>
+	     </trim>
+        ) VALUES (
+        <trim suffix="" suffixOverrides=",">
+		        <if test="id!=null">#{id} ,</if>
+		        <if test="userId!=null">#{userId} ,</if>
+		        <if test="userOrigin!=null">#{userOrigin} ,</if>
+		        <if test="userName!=null">#{userName} ,</if>
+		        <if test="userCode!=null">#{userCode} ,</if>
+		        <if test="userPhone!=null">#{userPhone} ,</if>
+		        <if test="userEmail!=null">#{userEmail} ,</if>
+		        <if test="sellerId!=null">#{sellerId} ,</if>
+		        <if test="orderCode!=null">#{orderCode} ,</if>
+		        <if test="orderType!=null">#{orderType} ,</if>
+		        <if test="orderStatus!=null">#{orderStatus} ,</if>
+		        <if test="orderSource!=null">#{orderSource} ,</if>
+		        <if test="orderAmount!=null">#{orderAmount} ,</if>
+		        <if test="orderPoint!=null">#{orderPoint} ,</if>
+		        <if test="orderRemark!=null">#{orderRemark} ,</if>
+		        <if test="orderCreateTime!=null">#{orderCreateTime} ,</if>
+		        <if test="orderConfirmTime!=null">#{orderConfirmTime} ,</if>
+		        <if test="orderPaymentTime!=null">#{orderPaymentTime} ,</if>
+		        <if test="orderDeliveryTime!=null">#{orderDeliveryTime} ,</if>
+		        <if test="orderReceiveTime!=null">#{orderReceiveTime} ,</if>
+		        <if test="orderBusinessType!=null">#{orderBusinessType} ,</if>
+		        <if test="orderProductNum!=null">#{orderProductNum} ,</if>
+		        <if test="orderProductFee!=null">#{orderProductFee} ,</if>
+		        <if test="rebateFee!=null">#{rebateFee} ,</if>
+		        <if test="couponFee!=null">#{couponFee} ,</if>
+		        <if test="deliveryFee!=null">#{deliveryFee} ,</if>
+		        <if test="discountFee!=null">#{discountFee} ,</if>
+		        <if test="pointFee!=null">#{pointFee} ,</if>
+		        <if test="paymentFee!=null">#{paymentFee} ,</if>
+		        <if test="paymentMethod!=null">#{paymentMethod} ,</if>
+		        <if test="paymentGatewayId!=null">#{paymentGatewayId} ,</if>
+		        <if test="paymentCode!=null">#{paymentCode} ,</if>
+		        <if test="paymentStatus!=null">#{paymentStatus} ,</if>
+		        <if test="receiverId!=null">#{receiverId} ,</if>
+		        <if test="receiverName!=null">#{receiverName} ,</if>
+		        <if test="receiverCountryId!=null">#{receiverCountryId} ,</if>
+		        <if test="receiverProvinceId!=null">#{receiverProvinceId} ,</if>
+		        <if test="receiverCityId!=null">#{receiverCityId} ,</if>
+		        <if test="receiverCountyId!=null">#{receiverCountyId} ,</if>
+		        <if test="receiverTownId!=null">#{receiverTownId} ,</if>
+		        <if test="receiverAddress!=null">#{receiverAddress} ,</if>
+		        <if test="receiverPostCode!=null">#{receiverPostCode} ,</if>
+		        <if test="receiverPhone!=null">#{receiverPhone} ,</if>
+		        <if test="receiverMobile!=null">#{receiverMobile} ,</if>
+		        <if test="deliveryMethod!=null">#{deliveryMethod} ,</if>
+		        <if test="deliveryCompanyId!=null">#{deliveryCompanyId} ,</if>
+		        <if test="deliveryCompanyName!=null">#{deliveryCompanyName} ,</if>
+		        <if test="deliveryCode!=null">#{deliveryCode} ,</if>
+		        <if test="deliveryCompanyUrl!=null">#{deliveryCompanyUrl} ,</if>
+		        <if test="deliveryRemark!=null">#{deliveryRemark} ,</if>
+		        <if test="invoiceId!=null">#{invoiceId} ,</if>
+		        <if test="createTime!=null">#{createTime} ,</if>
+		        <if test="updateTime!=null">#{updateTime} ,</if>
+		        <if test="batchOrderCode!=null">#{batchOrderCode} ,</if>
+		        <if test="isDeleted!=null">#{isDeleted} ,</if>
+		        <if test="orderFinanceTime!=null">#{orderFinanceTime} ,</if>
+		        <if test="orderCancelTime!=null">#{orderCancelTime} ,</if>
+		        <if test="isBatch!=null">#{isBatch} ,</if>
+		        <if test="newUser!=null">#{newUser} ,</if>
+		        <if test="subSellerId!=null">#{subSellerId} ,</if>
+		        <if test="pushStatus!=null">#{pushStatus} ,</if>
+		        <if test="huodongId!=null">#{huodongId} ,</if>
+		        <if test="xunleiId!=null">#{xunleiId} ,</if>
+		        <if test="exceptionType!=null">#{exceptionType} ,</if>
+		        <if test="statementStatus!=null">#{statementStatus} ,</if>
+		        <if test="statementTime!=null">#{statementTime} ,</if>
+		        <if test="outCode!=null">#{outCode} ,</if>
+		        <if test="tuanId!=null">#{tuanId} ,</if>
+		        <if test="orderTuanTime!=null">#{orderTuanTime} ,</if>
+		        <if test="orderRefundStatus!=null">#{orderRefundStatus} ,</if>
+		        <if test="isReviewed!=null">#{isReviewed} ,</if>
+		        <if test="totalTax!=null">#{totalTax} ,</if>
+		        <if test="sellerRemark!=null">#{sellerRemark} ,</if>
+		        <if test="lotterySucFlag!=null">#{lotterySucFlag} ,</if>
+		        <if test="lotteryOpenTime!=null">#{lotteryOpenTime} ,</if>
+		        <if test="userCouponId!=null">#{userCouponId} ,</if>
+		        <if test="sellerComments!=null">#{sellerComments} ,</if>
+		        <if test="remarkMsp!=null">#{remarkMsp} ,</if>
+		        <if test="orderStatusUnshipTime!=null">#{orderStatusUnshipTime} ,</if>
+		        <if test="orderFreeType!=null">#{orderFreeType} ,</if>
+		        <if test="appMessageStatus!=null">#{appMessageStatus} ,</if>
+		        <if test="outBuyStatus!=null">#{outBuyStatus} ,</if>
+		        <if test="identityCardFront!=null">#{identityCardFront} ,</if>
+		        <if test="identityCardBack!=null">#{identityCardBack} ,</if>
+		        <if test="totalWeight!=null">#{totalWeight} ,</if>
+		        <if test="receiverIdentityCardNo!=null">#{receiverIdentityCardNo} ,</if>
+		        <if test="sellerShopName!=null">#{sellerShopName} ,</if>
+		        <if test="sellerShopLogo!=null">#{sellerShopLogo} ,</if>
+		        <if test="shopHeadPic!=null">#{shopHeadPic} ,</if>
+		        <if test="haitaoLocal!=null">#{haitaoLocal} ,</if>
+		        <if test="mulitiplyDiscountFee!=null">#{mulitiplyDiscountFee} ,</if>
+		        <if test="otherPushStatus!=null">#{otherPushStatus} ,</if>
+		        <if test="haitaoOtherfee!=null">#{haitaoOtherfee} ,</if>
+		        <if test="haitaoPromotionAmount!=null">#{haitaoPromotionAmount} ,</if>
+		        <if test="haitaoPlatform!=null">#{haitaoPlatform} ,</if>
+		        <if test="inSure!=null">#{inSure} ,</if>
+		        <if test="page!=null">#{page} ,</if>
+		        <if test="module!=null">#{module} ,</if>
+		        <if test="haitaoPushStatus!=null">#{haitaoPushStatus} ,</if>
+		        <if test="freeReceiveId!=null">#{freeReceiveId} ,</if>
+		        <if test="taxDiscountFee!=null">#{taxDiscountFee} ,</if>
+		        <if test="haitaoOrderBuyTime!=null">#{haitaoOrderBuyTime} ,</if>
+		        <if test="fenmiSysId!=null">#{fenmiSysId} ,</if>
+		        <if test="orderComment!=null">#{orderComment} ,</if>
+		        <if test="haitaoTaxChannelType!=null">#{haitaoTaxChannelType} </if>
+       	  </trim>       
+        )
+	</insert>
+	
+	
+	<!--  向sales_order表中插入多条记录 -->
+	<insert id="SalesOrder_insertBatch" parameterType="java.util.List" >
+		<foreach collection="list" item="item" index="index" separator=";">
+	        INSERT INTO sales_order (
+	        <trim suffix="" suffixOverrides=",">
+		             <if test="item.id!=null ">ID,</if>
+		             <if test="item.userId!=null ">USER_ID,</if>
+		             <if test="item.userOrigin!=null ">USER_ORIGIN,</if>
+		             <if test="item.userName!=null ">USER_NAME,</if>
+		             <if test="item.userCode!=null ">USER_CODE,</if>
+		             <if test="item.userPhone!=null ">USER_PHONE,</if>
+		             <if test="item.userEmail!=null ">USER_EMAIL,</if>
+		             <if test="item.sellerId!=null ">SELLER_ID,</if>
+		             <if test="item.orderCode!=null ">ORDER_CODE,</if>
+		             <if test="item.orderType!=null ">ORDER_TYPE,</if>
+		             <if test="item.orderStatus!=null ">ORDER_STATUS,</if>
+		             <if test="item.orderSource!=null ">ORDER_SOURCE,</if>
+		             <if test="item.orderAmount!=null ">ORDER_AMOUNT,</if>
+		             <if test="item.orderPoint!=null ">ORDER_POINT,</if>
+		             <if test="item.orderRemark!=null ">ORDER_REMARK,</if>
+		             <if test="item.orderCreateTime!=null ">ORDER_CREATE_TIME,</if>
+		             <if test="item.orderConfirmTime!=null ">ORDER_CONFIRM_TIME,</if>
+		             <if test="item.orderPaymentTime!=null ">ORDER_PAYMENT_TIME,</if>
+		             <if test="item.orderDeliveryTime!=null ">ORDER_DELIVERY_TIME,</if>
+		             <if test="item.orderReceiveTime!=null ">ORDER_RECEIVE_TIME,</if>
+		             <if test="item.orderBusinessType!=null ">ORDER_BUSINESS_TYPE,</if>
+		             <if test="item.orderProductNum!=null ">ORDER_PRODUCT_NUM,</if>
+		             <if test="item.orderProductFee!=null ">ORDER_PRODUCT_FEE,</if>
+		             <if test="item.rebateFee!=null ">REBATE_FEE,</if>
+		             <if test="item.couponFee!=null ">COUPON_FEE,</if>
+		             <if test="item.deliveryFee!=null ">DELIVERY_FEE,</if>
+		             <if test="item.discountFee!=null ">DISCOUNT_FEE,</if>
+		             <if test="item.pointFee!=null ">POINT_FEE,</if>
+		             <if test="item.paymentFee!=null ">PAYMENT_FEE,</if>
+		             <if test="item.paymentMethod!=null ">PAYMENT_METHOD,</if>
+		             <if test="item.paymentGatewayId!=null ">PAYMENT_GATEWAY_ID,</if>
+		             <if test="item.paymentCode!=null ">PAYMENT_CODE,</if>
+		             <if test="item.paymentStatus!=null ">PAYMENT_STATUS,</if>
+		             <if test="item.receiverId!=null ">RECEIVER_ID,</if>
+		             <if test="item.receiverName!=null ">RECEIVER_NAME,</if>
+		             <if test="item.receiverCountryId!=null ">RECEIVER_COUNTRY_ID,</if>
+		             <if test="item.receiverProvinceId!=null ">RECEIVER_PROVINCE_ID,</if>
+		             <if test="item.receiverCityId!=null ">RECEIVER_CITY_ID,</if>
+		             <if test="item.receiverCountyId!=null ">RECEIVER_COUNTY_ID,</if>
+		             <if test="item.receiverTownId!=null ">RECEIVER_TOWN_ID,</if>
+		             <if test="item.receiverAddress!=null ">RECEIVER_ADDRESS,</if>
+		             <if test="item.receiverPostCode!=null ">RECEIVER_POST_CODE,</if>
+		             <if test="item.receiverPhone!=null ">RECEIVER_PHONE,</if>
+		             <if test="item.receiverMobile!=null ">RECEIVER_MOBILE,</if>
+		             <if test="item.deliveryMethod!=null ">DELIVERY_METHOD,</if>
+		             <if test="item.deliveryCompanyId!=null ">DELIVERY_COMPANY_ID,</if>
+		             <if test="item.deliveryCompanyName!=null ">DELIVERY_COMPANY_NAME,</if>
+		             <if test="item.deliveryCode!=null ">DELIVERY_CODE,</if>
+		             <if test="item.deliveryCompanyUrl!=null ">DELIVERY_COMPANY_URL,</if>
+		             <if test="item.deliveryRemark!=null ">DELIVERY_REMARK,</if>
+		             <if test="item.invoiceId!=null ">INVOICE_ID,</if>
+		             <if test="item.createTime!=null ">CREATE_TIME,</if>
+		             <if test="item.updateTime!=null ">UPDATE_TIME,</if>
+		             <if test="item.batchOrderCode!=null ">BATCH_ORDER_CODE,</if>
+		             <if test="item.isDeleted!=null ">IS_DELETED,</if>
+		             <if test="item.orderFinanceTime!=null ">ORDER_FINANCE_TIME,</if>
+		             <if test="item.orderCancelTime!=null ">ORDER_CANCEL_TIME,</if>
+		             <if test="item.isBatch!=null ">IS_BATCH,</if>
+		             <if test="item.newUser!=null ">NEW_USER,</if>
+		             <if test="item.subSellerId!=null ">SUB_SELLER_ID,</if>
+		             <if test="item.pushStatus!=null ">PUSH_STATUS,</if>
+		             <if test="item.huodongId!=null ">HUODONG_ID,</if>
+		             <if test="item.xunleiId!=null ">XUNLEI_ID,</if>
+		             <if test="item.exceptionType!=null ">EXCEPTION_TYPE,</if>
+		             <if test="item.statementStatus!=null ">STATEMENT_STATUS,</if>
+		             <if test="item.statementTime!=null ">STATEMENT_TIME,</if>
+		             <if test="item.outCode!=null ">OUT_CODE,</if>
+		             <if test="item.tuanId!=null ">TUAN_ID,</if>
+		             <if test="item.orderTuanTime!=null ">ORDER_TUAN_TIME,</if>
+		             <if test="item.orderRefundStatus!=null ">ORDER_REFUND_STATUS,</if>
+		             <if test="item.isReviewed!=null ">IS_REVIEWED,</if>
+		             <if test="item.totalTax!=null ">TOTAL_TAX,</if>
+		             <if test="item.sellerRemark!=null ">SELLER_REMARK,</if>
+		             <if test="item.lotterySucFlag!=null ">LOTTERY_SUC_FLAG,</if>
+		             <if test="item.lotteryOpenTime!=null ">LOTTERY_OPEN_TIME,</if>
+		             <if test="item.userCouponId!=null ">USER_COUPON_ID,</if>
+		             <if test="item.sellerComments!=null ">SELLER_COMMENTS,</if>
+		             <if test="item.remarkMsp!=null ">REMARK_MSP,</if>
+		             <if test="item.orderStatusUnshipTime!=null ">ORDER_STATUS_UNSHIP_TIME,</if>
+		             <if test="item.orderFreeType!=null ">ORDER_FREE_TYPE,</if>
+		             <if test="item.appMessageStatus!=null ">APP_MESSAGE_STATUS,</if>
+		             <if test="item.outBuyStatus!=null ">OUT_BUY_STATUS,</if>
+		             <if test="item.identityCardFront!=null ">IDENTITY_CARD_FRONT,</if>
+		             <if test="item.identityCardBack!=null ">IDENTITY_CARD_BACK,</if>
+		             <if test="item.totalWeight!=null ">TOTAL_WEIGHT,</if>
+		             <if test="item.receiverIdentityCardNo!=null ">RECEIVER_IDENTITY_CARD_NO,</if>
+		             <if test="item.sellerShopName!=null ">SELLER_SHOP_NAME,</if>
+		             <if test="item.sellerShopLogo!=null ">SELLER_SHOP_LOGO,</if>
+		             <if test="item.shopHeadPic!=null ">SHOP_HEAD_PIC,</if>
+		             <if test="item.haitaoLocal!=null ">HAITAO_LOCAL,</if>
+		             <if test="item.mulitiplyDiscountFee!=null ">MULITIPLY_DISCOUNT_FEE,</if>
+		             <if test="item.otherPushStatus!=null ">other_push_status,</if>
+		             <if test="item.haitaoOtherfee!=null ">HAITAO_OTHERFEE,</if>
+		             <if test="item.haitaoPromotionAmount!=null ">HAITAO_PROMOTION_AMOUNT,</if>
+		             <if test="item.haitaoPlatform!=null ">HAITAO_PLATFORM,</if>
+		             <if test="item.inSure!=null ">IN_SURE,</if>
+		             <if test="item.page!=null ">page,</if>
+		             <if test="item.module!=null ">module,</if>
+		             <if test="item.haitaoPushStatus!=null ">haitao_push_status,</if>
+		             <if test="item.freeReceiveId!=null ">free_receive_id,</if>
+		             <if test="item.taxDiscountFee!=null ">tax_discount_fee,</if>
+		             <if test="item.haitaoOrderBuyTime!=null ">haitao_order_buy_time,</if>
+		             <if test="item.fenmiSysId!=null ">fenmi_sys_id,</if>
+		             <if test="item.orderComment!=null ">order_comment,</if>
+		             <if test="item.haitaoTaxChannelType!=null ">haitao_tax_channel_type</if>
+		     </trim>
+	        ) VALUES (
+	        <trim suffix="" suffixOverrides=",">
+			        <if test="item.id!=null ">#{item.id} ,</if>
+			        <if test="item.userId!=null ">#{item.userId} ,</if>
+			        <if test="item.userOrigin!=null ">#{item.userOrigin} ,</if>
+			        <if test="item.userName!=null ">#{item.userName} ,</if>
+			        <if test="item.userCode!=null ">#{item.userCode} ,</if>
+			        <if test="item.userPhone!=null ">#{item.userPhone} ,</if>
+			        <if test="item.userEmail!=null ">#{item.userEmail} ,</if>
+			        <if test="item.sellerId!=null ">#{item.sellerId} ,</if>
+			        <if test="item.orderCode!=null ">#{item.orderCode} ,</if>
+			        <if test="item.orderType!=null ">#{item.orderType} ,</if>
+			        <if test="item.orderStatus!=null ">#{item.orderStatus} ,</if>
+			        <if test="item.orderSource!=null ">#{item.orderSource} ,</if>
+			        <if test="item.orderAmount!=null ">#{item.orderAmount} ,</if>
+			        <if test="item.orderPoint!=null ">#{item.orderPoint} ,</if>
+			        <if test="item.orderRemark!=null ">#{item.orderRemark} ,</if>
+			        <if test="item.orderCreateTime!=null ">#{item.orderCreateTime} ,</if>
+			        <if test="item.orderConfirmTime!=null ">#{item.orderConfirmTime} ,</if>
+			        <if test="item.orderPaymentTime!=null ">#{item.orderPaymentTime} ,</if>
+			        <if test="item.orderDeliveryTime!=null ">#{item.orderDeliveryTime} ,</if>
+			        <if test="item.orderReceiveTime!=null ">#{item.orderReceiveTime} ,</if>
+			        <if test="item.orderBusinessType!=null ">#{item.orderBusinessType} ,</if>
+			        <if test="item.orderProductNum!=null ">#{item.orderProductNum} ,</if>
+			        <if test="item.orderProductFee!=null ">#{item.orderProductFee} ,</if>
+			        <if test="item.rebateFee!=null ">#{item.rebateFee} ,</if>
+			        <if test="item.couponFee!=null ">#{item.couponFee} ,</if>
+			        <if test="item.deliveryFee!=null ">#{item.deliveryFee} ,</if>
+			        <if test="item.discountFee!=null ">#{item.discountFee} ,</if>
+			        <if test="item.pointFee!=null ">#{item.pointFee} ,</if>
+			        <if test="item.paymentFee!=null ">#{item.paymentFee} ,</if>
+			        <if test="item.paymentMethod!=null ">#{item.paymentMethod} ,</if>
+			        <if test="item.paymentGatewayId!=null ">#{item.paymentGatewayId} ,</if>
+			        <if test="item.paymentCode!=null ">#{item.paymentCode} ,</if>
+			        <if test="item.paymentStatus!=null ">#{item.paymentStatus} ,</if>
+			        <if test="item.receiverId!=null ">#{item.receiverId} ,</if>
+			        <if test="item.receiverName!=null ">#{item.receiverName} ,</if>
+			        <if test="item.receiverCountryId!=null ">#{item.receiverCountryId} ,</if>
+			        <if test="item.receiverProvinceId!=null ">#{item.receiverProvinceId} ,</if>
+			        <if test="item.receiverCityId!=null ">#{item.receiverCityId} ,</if>
+			        <if test="item.receiverCountyId!=null ">#{item.receiverCountyId} ,</if>
+			        <if test="item.receiverTownId!=null ">#{item.receiverTownId} ,</if>
+			        <if test="item.receiverAddress!=null ">#{item.receiverAddress} ,</if>
+			        <if test="item.receiverPostCode!=null ">#{item.receiverPostCode} ,</if>
+			        <if test="item.receiverPhone!=null ">#{item.receiverPhone} ,</if>
+			        <if test="item.receiverMobile!=null ">#{item.receiverMobile} ,</if>
+			        <if test="item.deliveryMethod!=null ">#{item.deliveryMethod} ,</if>
+			        <if test="item.deliveryCompanyId!=null ">#{item.deliveryCompanyId} ,</if>
+			        <if test="item.deliveryCompanyName!=null ">#{item.deliveryCompanyName} ,</if>
+			        <if test="item.deliveryCode!=null ">#{item.deliveryCode} ,</if>
+			        <if test="item.deliveryCompanyUrl!=null ">#{item.deliveryCompanyUrl} ,</if>
+			        <if test="item.deliveryRemark!=null ">#{item.deliveryRemark} ,</if>
+			        <if test="item.invoiceId!=null ">#{item.invoiceId} ,</if>
+			        <if test="item.createTime!=null ">#{item.createTime} ,</if>
+			        <if test="item.updateTime!=null ">#{item.updateTime} ,</if>
+			        <if test="item.batchOrderCode!=null ">#{item.batchOrderCode} ,</if>
+			        <if test="item.isDeleted!=null ">#{item.isDeleted} ,</if>
+			        <if test="item.orderFinanceTime!=null ">#{item.orderFinanceTime} ,</if>
+			        <if test="item.orderCancelTime!=null ">#{item.orderCancelTime} ,</if>
+			        <if test="item.isBatch!=null ">#{item.isBatch} ,</if>
+			        <if test="item.newUser!=null ">#{item.newUser} ,</if>
+			        <if test="item.subSellerId!=null ">#{item.subSellerId} ,</if>
+			        <if test="item.pushStatus!=null ">#{item.pushStatus} ,</if>
+			        <if test="item.huodongId!=null ">#{item.huodongId} ,</if>
+			        <if test="item.xunleiId!=null ">#{item.xunleiId} ,</if>
+			        <if test="item.exceptionType!=null ">#{item.exceptionType} ,</if>
+			        <if test="item.statementStatus!=null ">#{item.statementStatus} ,</if>
+			        <if test="item.statementTime!=null ">#{item.statementTime} ,</if>
+			        <if test="item.outCode!=null ">#{item.outCode} ,</if>
+			        <if test="item.tuanId!=null ">#{item.tuanId} ,</if>
+			        <if test="item.orderTuanTime!=null ">#{item.orderTuanTime} ,</if>
+			        <if test="item.orderRefundStatus!=null ">#{item.orderRefundStatus} ,</if>
+			        <if test="item.isReviewed!=null ">#{item.isReviewed} ,</if>
+			        <if test="item.totalTax!=null ">#{item.totalTax} ,</if>
+			        <if test="item.sellerRemark!=null ">#{item.sellerRemark} ,</if>
+			        <if test="item.lotterySucFlag!=null ">#{item.lotterySucFlag} ,</if>
+			        <if test="item.lotteryOpenTime!=null ">#{item.lotteryOpenTime} ,</if>
+			        <if test="item.userCouponId!=null ">#{item.userCouponId} ,</if>
+			        <if test="item.sellerComments!=null ">#{item.sellerComments} ,</if>
+			        <if test="item.remarkMsp!=null ">#{item.remarkMsp} ,</if>
+			        <if test="item.orderStatusUnshipTime!=null ">#{item.orderStatusUnshipTime} ,</if>
+			        <if test="item.orderFreeType!=null ">#{item.orderFreeType} ,</if>
+			        <if test="item.appMessageStatus!=null ">#{item.appMessageStatus} ,</if>
+			        <if test="item.outBuyStatus!=null ">#{item.outBuyStatus} ,</if>
+			        <if test="item.identityCardFront!=null ">#{item.identityCardFront} ,</if>
+			        <if test="item.identityCardBack!=null ">#{item.identityCardBack} ,</if>
+			        <if test="item.totalWeight!=null ">#{item.totalWeight} ,</if>
+			        <if test="item.receiverIdentityCardNo!=null ">#{item.receiverIdentityCardNo} ,</if>
+			        <if test="item.sellerShopName!=null ">#{item.sellerShopName} ,</if>
+			        <if test="item.sellerShopLogo!=null ">#{item.sellerShopLogo} ,</if>
+			        <if test="item.shopHeadPic!=null ">#{item.shopHeadPic} ,</if>
+			        <if test="item.haitaoLocal!=null ">#{item.haitaoLocal} ,</if>
+			        <if test="item.mulitiplyDiscountFee!=null ">#{item.mulitiplyDiscountFee} ,</if>
+			        <if test="item.otherPushStatus!=null ">#{item.otherPushStatus} ,</if>
+			        <if test="item.haitaoOtherfee!=null ">#{item.haitaoOtherfee} ,</if>
+			        <if test="item.haitaoPromotionAmount!=null ">#{item.haitaoPromotionAmount} ,</if>
+			        <if test="item.haitaoPlatform!=null ">#{item.haitaoPlatform} ,</if>
+			        <if test="item.inSure!=null ">#{item.inSure} ,</if>
+			        <if test="item.page!=null ">#{item.page} ,</if>
+			        <if test="item.module!=null ">#{item.module} ,</if>
+			        <if test="item.haitaoPushStatus!=null ">#{item.haitaoPushStatus} ,</if>
+			        <if test="item.freeReceiveId!=null ">#{item.freeReceiveId} ,</if>
+			        <if test="item.taxDiscountFee!=null ">#{item.taxDiscountFee} ,</if>
+			        <if test="item.haitaoOrderBuyTime!=null ">#{item.haitaoOrderBuyTime} ,</if>
+			        <if test="item.fenmiSysId!=null ">#{item.fenmiSysId} ,</if>
+			        <if test="item.orderComment!=null ">#{item.orderComment} ,</if>
+			        <if test="item.haitaoTaxChannelType!=null ">#{item.haitaoTaxChannelType} </if>
+	       	  </trim>       
+	        )
+	    </foreach>
+	</insert>
+	
+    <!-- 根据ID更新表sales_order -->
+	<update id="SalesOrder_update" >
+        UPDATE sales_order 
+             <set>
+             	 <trim suffix="" suffixOverrides=",">
+			        	<if test="userId!= null and userId!=''">USER_ID = #{userId} ,</if>
+			        	<if test="userOrigin!= null and userOrigin!=''">USER_ORIGIN = #{userOrigin} ,</if>
+			        	<if test="userName!= null and userName!=''">USER_NAME = #{userName} ,</if>
+			        	<if test="userCode!= null and userCode!=''">USER_CODE = #{userCode} ,</if>
+			        	<if test="userPhone!= null and userPhone!=''">USER_PHONE = #{userPhone} ,</if>
+			        	<if test="userEmail!= null and userEmail!=''">USER_EMAIL = #{userEmail} ,</if>
+			        	<if test="sellerId!= null and sellerId!=''">SELLER_ID = #{sellerId} ,</if>
+			        	<if test="orderCode!= null and orderCode!=''">ORDER_CODE = #{orderCode} ,</if>
+			        	<if test="orderType!= null and orderType!=''">ORDER_TYPE = #{orderType} ,</if>
+			        	<if test="orderStatus!= null and orderStatus!=''">ORDER_STATUS = #{orderStatus} ,</if>
+			        	<if test="orderSource!= null and orderSource!=''">ORDER_SOURCE = #{orderSource} ,</if>
+			        	<if test="orderAmount!= null and orderAmount!=''">ORDER_AMOUNT = #{orderAmount} ,</if>
+			        	<if test="orderPoint!= null and orderPoint!=''">ORDER_POINT = #{orderPoint} ,</if>
+			        	<if test="orderRemark!= null and orderRemark!=''">ORDER_REMARK = #{orderRemark} ,</if>
+			        	<if test="orderCreateTime!= null and orderCreateTime!=''">ORDER_CREATE_TIME = #{orderCreateTime} ,</if>
+			        	<if test="orderConfirmTime!= null and orderConfirmTime!=''">ORDER_CONFIRM_TIME = #{orderConfirmTime} ,</if>
+			        	<if test="orderPaymentTime!= null and orderPaymentTime!=''">ORDER_PAYMENT_TIME = #{orderPaymentTime} ,</if>
+			        	<if test="orderDeliveryTime!= null and orderDeliveryTime!=''">ORDER_DELIVERY_TIME = #{orderDeliveryTime} ,</if>
+			        	<if test="orderReceiveTime!= null and orderReceiveTime!=''">ORDER_RECEIVE_TIME = #{orderReceiveTime} ,</if>
+			        	<if test="orderBusinessType!= null and orderBusinessType!=''">ORDER_BUSINESS_TYPE = #{orderBusinessType} ,</if>
+			        	<if test="orderProductNum!= null and orderProductNum!=''">ORDER_PRODUCT_NUM = #{orderProductNum} ,</if>
+			        	<if test="orderProductFee!= null and orderProductFee!=''">ORDER_PRODUCT_FEE = #{orderProductFee} ,</if>
+			        	<if test="rebateFee!= null and rebateFee!=''">REBATE_FEE = #{rebateFee} ,</if>
+			        	<if test="couponFee!= null and couponFee!=''">COUPON_FEE = #{couponFee} ,</if>
+			        	<if test="deliveryFee!= null and deliveryFee!=''">DELIVERY_FEE = #{deliveryFee} ,</if>
+			        	<if test="discountFee!= null and discountFee!=''">DISCOUNT_FEE = #{discountFee} ,</if>
+			        	<if test="pointFee!= null and pointFee!=''">POINT_FEE = #{pointFee} ,</if>
+			        	<if test="paymentFee!= null and paymentFee!=''">PAYMENT_FEE = #{paymentFee} ,</if>
+			        	<if test="paymentMethod!= null and paymentMethod!=''">PAYMENT_METHOD = #{paymentMethod} ,</if>
+			        	<if test="paymentGatewayId!= null and paymentGatewayId!=''">PAYMENT_GATEWAY_ID = #{paymentGatewayId} ,</if>
+			        	<if test="paymentCode!= null and paymentCode!=''">PAYMENT_CODE = #{paymentCode} ,</if>
+			        	<if test="paymentStatus!= null and paymentStatus!=''">PAYMENT_STATUS = #{paymentStatus} ,</if>
+			        	<if test="receiverId!= null and receiverId!=''">RECEIVER_ID = #{receiverId} ,</if>
+			        	<if test="receiverName!= null and receiverName!=''">RECEIVER_NAME = #{receiverName} ,</if>
+			        	<if test="receiverCountryId!= null and receiverCountryId!=''">RECEIVER_COUNTRY_ID = #{receiverCountryId} ,</if>
+			        	<if test="receiverProvinceId!= null and receiverProvinceId!=''">RECEIVER_PROVINCE_ID = #{receiverProvinceId} ,</if>
+			        	<if test="receiverCityId!= null and receiverCityId!=''">RECEIVER_CITY_ID = #{receiverCityId} ,</if>
+			        	<if test="receiverCountyId!= null and receiverCountyId!=''">RECEIVER_COUNTY_ID = #{receiverCountyId} ,</if>
+			        	<if test="receiverTownId!= null and receiverTownId!=''">RECEIVER_TOWN_ID = #{receiverTownId} ,</if>
+			        	<if test="receiverAddress!= null and receiverAddress!=''">RECEIVER_ADDRESS = #{receiverAddress} ,</if>
+			        	<if test="receiverPostCode!= null and receiverPostCode!=''">RECEIVER_POST_CODE = #{receiverPostCode} ,</if>
+			        	<if test="receiverPhone!= null and receiverPhone!=''">RECEIVER_PHONE = #{receiverPhone} ,</if>
+			        	<if test="receiverMobile!= null and receiverMobile!=''">RECEIVER_MOBILE = #{receiverMobile} ,</if>
+			        	<if test="deliveryMethod!= null and deliveryMethod!=''">DELIVERY_METHOD = #{deliveryMethod} ,</if>
+			        	<if test="deliveryCompanyId!= null and deliveryCompanyId!=''">DELIVERY_COMPANY_ID = #{deliveryCompanyId} ,</if>
+			        	<if test="deliveryCompanyName!= null and deliveryCompanyName!=''">DELIVERY_COMPANY_NAME = #{deliveryCompanyName} ,</if>
+			        	<if test="deliveryCode!= null and deliveryCode!=''">DELIVERY_CODE = #{deliveryCode} ,</if>
+			        	<if test="deliveryCompanyUrl!= null and deliveryCompanyUrl!=''">DELIVERY_COMPANY_URL = #{deliveryCompanyUrl} ,</if>
+			        	<if test="deliveryRemark!= null and deliveryRemark!=''">DELIVERY_REMARK = #{deliveryRemark} ,</if>
+			        	<if test="invoiceId!= null and invoiceId!=''">INVOICE_ID = #{invoiceId} ,</if>
+			        	<if test="createTime!= null and createTime!=''">CREATE_TIME = #{createTime} ,</if>
+			        	<if test="updateTime!= null and updateTime!=''">UPDATE_TIME = #{updateTime} ,</if>
+			        	<if test="batchOrderCode!= null and batchOrderCode!=''">BATCH_ORDER_CODE = #{batchOrderCode} ,</if>
+			        	<if test="isDeleted!= null and isDeleted!=''">IS_DELETED = #{isDeleted} ,</if>
+			        	<if test="orderFinanceTime!= null and orderFinanceTime!=''">ORDER_FINANCE_TIME = #{orderFinanceTime} ,</if>
+			        	<if test="orderCancelTime!= null and orderCancelTime!=''">ORDER_CANCEL_TIME = #{orderCancelTime} ,</if>
+			        	<if test="isBatch!= null and isBatch!=''">IS_BATCH = #{isBatch} ,</if>
+			        	<if test="newUser!= null and newUser!=''">NEW_USER = #{newUser} ,</if>
+			        	<if test="subSellerId!= null and subSellerId!=''">SUB_SELLER_ID = #{subSellerId} ,</if>
+			        	<if test="pushStatus!= null and pushStatus!=''">PUSH_STATUS = #{pushStatus} ,</if>
+			        	<if test="huodongId!= null and huodongId!=''">HUODONG_ID = #{huodongId} ,</if>
+			        	<if test="xunleiId!= null and xunleiId!=''">XUNLEI_ID = #{xunleiId} ,</if>
+			        	<if test="exceptionType!= null and exceptionType!=''">EXCEPTION_TYPE = #{exceptionType} ,</if>
+			        	<if test="statementStatus!= null and statementStatus!=''">STATEMENT_STATUS = #{statementStatus} ,</if>
+			        	<if test="statementTime!= null and statementTime!=''">STATEMENT_TIME = #{statementTime} ,</if>
+			        	<if test="outCode!= null and outCode!=''">OUT_CODE = #{outCode} ,</if>
+			        	<if test="tuanId!= null and tuanId!=''">TUAN_ID = #{tuanId} ,</if>
+			        	<if test="orderTuanTime!= null and orderTuanTime!=''">ORDER_TUAN_TIME = #{orderTuanTime} ,</if>
+			        	<if test="orderRefundStatus!= null and orderRefundStatus!=''">ORDER_REFUND_STATUS = #{orderRefundStatus} ,</if>
+			        	<if test="isReviewed!= null and isReviewed!=''">IS_REVIEWED = #{isReviewed} ,</if>
+			        	<if test="totalTax!= null and totalTax!=''">TOTAL_TAX = #{totalTax} ,</if>
+			        	<if test="sellerRemark!= null and sellerRemark!=''">SELLER_REMARK = #{sellerRemark} ,</if>
+			        	<if test="lotterySucFlag!= null and lotterySucFlag!=''">LOTTERY_SUC_FLAG = #{lotterySucFlag} ,</if>
+			        	<if test="lotteryOpenTime!= null and lotteryOpenTime!=''">LOTTERY_OPEN_TIME = #{lotteryOpenTime} ,</if>
+			        	<if test="userCouponId!= null and userCouponId!=''">USER_COUPON_ID = #{userCouponId} ,</if>
+			        	<if test="sellerComments!= null and sellerComments!=''">SELLER_COMMENTS = #{sellerComments} ,</if>
+			        	<if test="remarkMsp!= null and remarkMsp!=''">REMARK_MSP = #{remarkMsp} ,</if>
+			        	<if test="orderStatusUnshipTime!= null and orderStatusUnshipTime!=''">ORDER_STATUS_UNSHIP_TIME = #{orderStatusUnshipTime} ,</if>
+			        	<if test="orderFreeType!= null and orderFreeType!=''">ORDER_FREE_TYPE = #{orderFreeType} ,</if>
+			        	<if test="appMessageStatus!= null and appMessageStatus!=''">APP_MESSAGE_STATUS = #{appMessageStatus} ,</if>
+			        	<if test="outBuyStatus!= null and outBuyStatus!=''">OUT_BUY_STATUS = #{outBuyStatus} ,</if>
+			        	<if test="identityCardFront!= null and identityCardFront!=''">IDENTITY_CARD_FRONT = #{identityCardFront} ,</if>
+			        	<if test="identityCardBack!= null and identityCardBack!=''">IDENTITY_CARD_BACK = #{identityCardBack} ,</if>
+			        	<if test="totalWeight!= null and totalWeight!=''">TOTAL_WEIGHT = #{totalWeight} ,</if>
+			        	<if test="receiverIdentityCardNo!= null and receiverIdentityCardNo!=''">RECEIVER_IDENTITY_CARD_NO = #{receiverIdentityCardNo} ,</if>
+			        	<if test="sellerShopName!= null and sellerShopName!=''">SELLER_SHOP_NAME = #{sellerShopName} ,</if>
+			        	<if test="sellerShopLogo!= null and sellerShopLogo!=''">SELLER_SHOP_LOGO = #{sellerShopLogo} ,</if>
+			        	<if test="shopHeadPic!= null and shopHeadPic!=''">SHOP_HEAD_PIC = #{shopHeadPic} ,</if>
+			        	<if test="haitaoLocal!= null and haitaoLocal!=''">HAITAO_LOCAL = #{haitaoLocal} ,</if>
+			        	<if test="mulitiplyDiscountFee!= null and mulitiplyDiscountFee!=''">MULITIPLY_DISCOUNT_FEE = #{mulitiplyDiscountFee} ,</if>
+			        	<if test="otherPushStatus!= null and otherPushStatus!=''">other_push_status = #{otherPushStatus} ,</if>
+			        	<if test="haitaoOtherfee!= null and haitaoOtherfee!=''">HAITAO_OTHERFEE = #{haitaoOtherfee} ,</if>
+			        	<if test="haitaoPromotionAmount!= null and haitaoPromotionAmount!=''">HAITAO_PROMOTION_AMOUNT = #{haitaoPromotionAmount} ,</if>
+			        	<if test="haitaoPlatform!= null and haitaoPlatform!=''">HAITAO_PLATFORM = #{haitaoPlatform} ,</if>
+			        	<if test="inSure!= null and inSure!=''">IN_SURE = #{inSure} ,</if>
+			        	<if test="page!= null and page!=''">page = #{page} ,</if>
+			        	<if test="module!= null and module!=''">module = #{module} ,</if>
+			        	<if test="haitaoPushStatus!= null and haitaoPushStatus!=''">haitao_push_status = #{haitaoPushStatus} ,</if>
+			        	<if test="freeReceiveId!= null and freeReceiveId!=''">free_receive_id = #{freeReceiveId} ,</if>
+			        	<if test="taxDiscountFee!= null and taxDiscountFee!=''">tax_discount_fee = #{taxDiscountFee} ,</if>
+			        	<if test="haitaoOrderBuyTime!= null and haitaoOrderBuyTime!=''">haitao_order_buy_time = #{haitaoOrderBuyTime} ,</if>
+			        	<if test="fenmiSysId!= null and fenmiSysId!=''">fenmi_sys_id = #{fenmiSysId} ,</if>
+			        	<if test="orderComment!= null and orderComment!=''">order_comment = #{orderComment} ,</if>
+			        	<if test="haitaoTaxChannelType!= null and haitaoTaxChannelType!=''">haitao_tax_channel_type = #{haitaoTaxChannelType} </if>
+			      </trim>    
+			 </set>
+        WHERE 
+	        ID = #{id} 
+	</update>
+
+    <!-- 根据ID批量更新表sales_order -->
+	<update id="SalesOrder_updateBatch"  parameterType="java.util.List">
+		<foreach collection="list" item="item" index="index" open="" close="" separator=";">
+			UPDATE sales_order
+             <set>
+             	 <trim suffix="" suffixOverrides=",">
+			        	<if test="item.userId!= null and item.userId!=''">USER_ID = #{item.userId} ,</if>
+			        	<if test="item.userOrigin!= null and item.userOrigin!=''">USER_ORIGIN = #{item.userOrigin} ,</if>
+			        	<if test="item.userName!= null and item.userName!=''">USER_NAME = #{item.userName} ,</if>
+			        	<if test="item.userCode!= null and item.userCode!=''">USER_CODE = #{item.userCode} ,</if>
+			        	<if test="item.userPhone!= null and item.userPhone!=''">USER_PHONE = #{item.userPhone} ,</if>
+			        	<if test="item.userEmail!= null and item.userEmail!=''">USER_EMAIL = #{item.userEmail} ,</if>
+			        	<if test="item.sellerId!= null and item.sellerId!=''">SELLER_ID = #{item.sellerId} ,</if>
+			        	<if test="item.orderCode!= null and item.orderCode!=''">ORDER_CODE = #{item.orderCode} ,</if>
+			        	<if test="item.orderType!= null and item.orderType!=''">ORDER_TYPE = #{item.orderType} ,</if>
+			        	<if test="item.orderStatus!= null and item.orderStatus!=''">ORDER_STATUS = #{item.orderStatus} ,</if>
+			        	<if test="item.orderSource!= null and item.orderSource!=''">ORDER_SOURCE = #{item.orderSource} ,</if>
+			        	<if test="item.orderAmount!= null and item.orderAmount!=''">ORDER_AMOUNT = #{item.orderAmount} ,</if>
+			        	<if test="item.orderPoint!= null and item.orderPoint!=''">ORDER_POINT = #{item.orderPoint} ,</if>
+			        	<if test="item.orderRemark!= null and item.orderRemark!=''">ORDER_REMARK = #{item.orderRemark} ,</if>
+			        	<if test="item.orderCreateTime!= null and item.orderCreateTime!=''">ORDER_CREATE_TIME = #{item.orderCreateTime} ,</if>
+			        	<if test="item.orderConfirmTime!= null and item.orderConfirmTime!=''">ORDER_CONFIRM_TIME = #{item.orderConfirmTime} ,</if>
+			        	<if test="item.orderPaymentTime!= null and item.orderPaymentTime!=''">ORDER_PAYMENT_TIME = #{item.orderPaymentTime} ,</if>
+			        	<if test="item.orderDeliveryTime!= null and item.orderDeliveryTime!=''">ORDER_DELIVERY_TIME = #{item.orderDeliveryTime} ,</if>
+			        	<if test="item.orderReceiveTime!= null and item.orderReceiveTime!=''">ORDER_RECEIVE_TIME = #{item.orderReceiveTime} ,</if>
+			        	<if test="item.orderBusinessType!= null and item.orderBusinessType!=''">ORDER_BUSINESS_TYPE = #{item.orderBusinessType} ,</if>
+			        	<if test="item.orderProductNum!= null and item.orderProductNum!=''">ORDER_PRODUCT_NUM = #{item.orderProductNum} ,</if>
+			        	<if test="item.orderProductFee!= null and item.orderProductFee!=''">ORDER_PRODUCT_FEE = #{item.orderProductFee} ,</if>
+			        	<if test="item.rebateFee!= null and item.rebateFee!=''">REBATE_FEE = #{item.rebateFee} ,</if>
+			        	<if test="item.couponFee!= null and item.couponFee!=''">COUPON_FEE = #{item.couponFee} ,</if>
+			        	<if test="item.deliveryFee!= null and item.deliveryFee!=''">DELIVERY_FEE = #{item.deliveryFee} ,</if>
+			        	<if test="item.discountFee!= null and item.discountFee!=''">DISCOUNT_FEE = #{item.discountFee} ,</if>
+			        	<if test="item.pointFee!= null and item.pointFee!=''">POINT_FEE = #{item.pointFee} ,</if>
+			        	<if test="item.paymentFee!= null and item.paymentFee!=''">PAYMENT_FEE = #{item.paymentFee} ,</if>
+			        	<if test="item.paymentMethod!= null and item.paymentMethod!=''">PAYMENT_METHOD = #{item.paymentMethod} ,</if>
+			        	<if test="item.paymentGatewayId!= null and item.paymentGatewayId!=''">PAYMENT_GATEWAY_ID = #{item.paymentGatewayId} ,</if>
+			        	<if test="item.paymentCode!= null and item.paymentCode!=''">PAYMENT_CODE = #{item.paymentCode} ,</if>
+			        	<if test="item.paymentStatus!= null and item.paymentStatus!=''">PAYMENT_STATUS = #{item.paymentStatus} ,</if>
+			        	<if test="item.receiverId!= null and item.receiverId!=''">RECEIVER_ID = #{item.receiverId} ,</if>
+			        	<if test="item.receiverName!= null and item.receiverName!=''">RECEIVER_NAME = #{item.receiverName} ,</if>
+			        	<if test="item.receiverCountryId!= null and item.receiverCountryId!=''">RECEIVER_COUNTRY_ID = #{item.receiverCountryId} ,</if>
+			        	<if test="item.receiverProvinceId!= null and item.receiverProvinceId!=''">RECEIVER_PROVINCE_ID = #{item.receiverProvinceId} ,</if>
+			        	<if test="item.receiverCityId!= null and item.receiverCityId!=''">RECEIVER_CITY_ID = #{item.receiverCityId} ,</if>
+			        	<if test="item.receiverCountyId!= null and item.receiverCountyId!=''">RECEIVER_COUNTY_ID = #{item.receiverCountyId} ,</if>
+			        	<if test="item.receiverTownId!= null and item.receiverTownId!=''">RECEIVER_TOWN_ID = #{item.receiverTownId} ,</if>
+			        	<if test="item.receiverAddress!= null and item.receiverAddress!=''">RECEIVER_ADDRESS = #{item.receiverAddress} ,</if>
+			        	<if test="item.receiverPostCode!= null and item.receiverPostCode!=''">RECEIVER_POST_CODE = #{item.receiverPostCode} ,</if>
+			        	<if test="item.receiverPhone!= null and item.receiverPhone!=''">RECEIVER_PHONE = #{item.receiverPhone} ,</if>
+			        	<if test="item.receiverMobile!= null and item.receiverMobile!=''">RECEIVER_MOBILE = #{item.receiverMobile} ,</if>
+			        	<if test="item.deliveryMethod!= null and item.deliveryMethod!=''">DELIVERY_METHOD = #{item.deliveryMethod} ,</if>
+			        	<if test="item.deliveryCompanyId!= null and item.deliveryCompanyId!=''">DELIVERY_COMPANY_ID = #{item.deliveryCompanyId} ,</if>
+			        	<if test="item.deliveryCompanyName!= null and item.deliveryCompanyName!=''">DELIVERY_COMPANY_NAME = #{item.deliveryCompanyName} ,</if>
+			        	<if test="item.deliveryCode!= null and item.deliveryCode!=''">DELIVERY_CODE = #{item.deliveryCode} ,</if>
+			        	<if test="item.deliveryCompanyUrl!= null and item.deliveryCompanyUrl!=''">DELIVERY_COMPANY_URL = #{item.deliveryCompanyUrl} ,</if>
+			        	<if test="item.deliveryRemark!= null and item.deliveryRemark!=''">DELIVERY_REMARK = #{item.deliveryRemark} ,</if>
+			        	<if test="item.invoiceId!= null and item.invoiceId!=''">INVOICE_ID = #{item.invoiceId} ,</if>
+			        	<if test="item.createTime!= null and item.createTime!=''">CREATE_TIME = #{item.createTime} ,</if>
+			        	<if test="item.updateTime!= null and item.updateTime!=''">UPDATE_TIME = #{item.updateTime} ,</if>
+			        	<if test="item.batchOrderCode!= null and item.batchOrderCode!=''">BATCH_ORDER_CODE = #{item.batchOrderCode} ,</if>
+			        	<if test="item.isDeleted!= null and item.isDeleted!=''">IS_DELETED = #{item.isDeleted} ,</if>
+			        	<if test="item.orderFinanceTime!= null and item.orderFinanceTime!=''">ORDER_FINANCE_TIME = #{item.orderFinanceTime} ,</if>
+			        	<if test="item.orderCancelTime!= null and item.orderCancelTime!=''">ORDER_CANCEL_TIME = #{item.orderCancelTime} ,</if>
+			        	<if test="item.isBatch!= null and item.isBatch!=''">IS_BATCH = #{item.isBatch} ,</if>
+			        	<if test="item.newUser!= null and item.newUser!=''">NEW_USER = #{item.newUser} ,</if>
+			        	<if test="item.subSellerId!= null and item.subSellerId!=''">SUB_SELLER_ID = #{item.subSellerId} ,</if>
+			        	<if test="item.pushStatus!= null and item.pushStatus!=''">PUSH_STATUS = #{item.pushStatus} ,</if>
+			        	<if test="item.huodongId!= null and item.huodongId!=''">HUODONG_ID = #{item.huodongId} ,</if>
+			        	<if test="item.xunleiId!= null and item.xunleiId!=''">XUNLEI_ID = #{item.xunleiId} ,</if>
+			        	<if test="item.exceptionType!= null and item.exceptionType!=''">EXCEPTION_TYPE = #{item.exceptionType} ,</if>
+			        	<if test="item.statementStatus!= null and item.statementStatus!=''">STATEMENT_STATUS = #{item.statementStatus} ,</if>
+			        	<if test="item.statementTime!= null and item.statementTime!=''">STATEMENT_TIME = #{item.statementTime} ,</if>
+			        	<if test="item.outCode!= null and item.outCode!=''">OUT_CODE = #{item.outCode} ,</if>
+			        	<if test="item.tuanId!= null and item.tuanId!=''">TUAN_ID = #{item.tuanId} ,</if>
+			        	<if test="item.orderTuanTime!= null and item.orderTuanTime!=''">ORDER_TUAN_TIME = #{item.orderTuanTime} ,</if>
+			        	<if test="item.orderRefundStatus!= null and item.orderRefundStatus!=''">ORDER_REFUND_STATUS = #{item.orderRefundStatus} ,</if>
+			        	<if test="item.isReviewed!= null and item.isReviewed!=''">IS_REVIEWED = #{item.isReviewed} ,</if>
+			        	<if test="item.totalTax!= null and item.totalTax!=''">TOTAL_TAX = #{item.totalTax} ,</if>
+			        	<if test="item.sellerRemark!= null and item.sellerRemark!=''">SELLER_REMARK = #{item.sellerRemark} ,</if>
+			        	<if test="item.lotterySucFlag!= null and item.lotterySucFlag!=''">LOTTERY_SUC_FLAG = #{item.lotterySucFlag} ,</if>
+			        	<if test="item.lotteryOpenTime!= null and item.lotteryOpenTime!=''">LOTTERY_OPEN_TIME = #{item.lotteryOpenTime} ,</if>
+			        	<if test="item.userCouponId!= null and item.userCouponId!=''">USER_COUPON_ID = #{item.userCouponId} ,</if>
+			        	<if test="item.sellerComments!= null and item.sellerComments!=''">SELLER_COMMENTS = #{item.sellerComments} ,</if>
+			        	<if test="item.remarkMsp!= null and item.remarkMsp!=''">REMARK_MSP = #{item.remarkMsp} ,</if>
+			        	<if test="item.orderStatusUnshipTime!= null and item.orderStatusUnshipTime!=''">ORDER_STATUS_UNSHIP_TIME = #{item.orderStatusUnshipTime} ,</if>
+			        	<if test="item.orderFreeType!= null and item.orderFreeType!=''">ORDER_FREE_TYPE = #{item.orderFreeType} ,</if>
+			        	<if test="item.appMessageStatus!= null and item.appMessageStatus!=''">APP_MESSAGE_STATUS = #{item.appMessageStatus} ,</if>
+			        	<if test="item.outBuyStatus!= null and item.outBuyStatus!=''">OUT_BUY_STATUS = #{item.outBuyStatus} ,</if>
+			        	<if test="item.identityCardFront!= null and item.identityCardFront!=''">IDENTITY_CARD_FRONT = #{item.identityCardFront} ,</if>
+			        	<if test="item.identityCardBack!= null and item.identityCardBack!=''">IDENTITY_CARD_BACK = #{item.identityCardBack} ,</if>
+			        	<if test="item.totalWeight!= null and item.totalWeight!=''">TOTAL_WEIGHT = #{item.totalWeight} ,</if>
+			        	<if test="item.receiverIdentityCardNo!= null and item.receiverIdentityCardNo!=''">RECEIVER_IDENTITY_CARD_NO = #{item.receiverIdentityCardNo} ,</if>
+			        	<if test="item.sellerShopName!= null and item.sellerShopName!=''">SELLER_SHOP_NAME = #{item.sellerShopName} ,</if>
+			        	<if test="item.sellerShopLogo!= null and item.sellerShopLogo!=''">SELLER_SHOP_LOGO = #{item.sellerShopLogo} ,</if>
+			        	<if test="item.shopHeadPic!= null and item.shopHeadPic!=''">SHOP_HEAD_PIC = #{item.shopHeadPic} ,</if>
+			        	<if test="item.haitaoLocal!= null and item.haitaoLocal!=''">HAITAO_LOCAL = #{item.haitaoLocal} ,</if>
+			        	<if test="item.mulitiplyDiscountFee!= null and item.mulitiplyDiscountFee!=''">MULITIPLY_DISCOUNT_FEE = #{item.mulitiplyDiscountFee} ,</if>
+			        	<if test="item.otherPushStatus!= null and item.otherPushStatus!=''">other_push_status = #{item.otherPushStatus} ,</if>
+			        	<if test="item.haitaoOtherfee!= null and item.haitaoOtherfee!=''">HAITAO_OTHERFEE = #{item.haitaoOtherfee} ,</if>
+			        	<if test="item.haitaoPromotionAmount!= null and item.haitaoPromotionAmount!=''">HAITAO_PROMOTION_AMOUNT = #{item.haitaoPromotionAmount} ,</if>
+			        	<if test="item.haitaoPlatform!= null and item.haitaoPlatform!=''">HAITAO_PLATFORM = #{item.haitaoPlatform} ,</if>
+			        	<if test="item.inSure!= null and item.inSure!=''">IN_SURE = #{item.inSure} ,</if>
+			        	<if test="item.page!= null and item.page!=''">page = #{item.page} ,</if>
+			        	<if test="item.module!= null and item.module!=''">module = #{item.module} ,</if>
+			        	<if test="item.haitaoPushStatus!= null and item.haitaoPushStatus!=''">haitao_push_status = #{item.haitaoPushStatus} ,</if>
+			        	<if test="item.freeReceiveId!= null and item.freeReceiveId!=''">free_receive_id = #{item.freeReceiveId} ,</if>
+			        	<if test="item.taxDiscountFee!= null and item.taxDiscountFee!=''">tax_discount_fee = #{item.taxDiscountFee} ,</if>
+			        	<if test="item.haitaoOrderBuyTime!= null and item.haitaoOrderBuyTime!=''">haitao_order_buy_time = #{item.haitaoOrderBuyTime} ,</if>
+			        	<if test="item.fenmiSysId!= null and item.fenmiSysId!=''">fenmi_sys_id = #{item.fenmiSysId} ,</if>
+			        	<if test="item.orderComment!= null and item.orderComment!=''">order_comment = #{item.orderComment} ,</if>
+			        	<if test="item.haitaoTaxChannelType!= null and item.haitaoTaxChannelType!=''">haitao_tax_channel_type = #{item.haitaoTaxChannelType} </if>
+			      </trim>    
+			 </set>
+			WHERE 
+		        ID = #{item.id} 
+		</foreach>
+	</update>
+	
+    <!-- 根据ID删除表sales_order -->
+    <delete id="SalesOrder_delete">
+    <![CDATA[
+        DELETE FROM sales_order WHERE
+        ID = #{id} 
+    ]]>
+    </delete>
+	
+</mapper>
+

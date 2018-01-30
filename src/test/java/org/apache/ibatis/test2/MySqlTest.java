@@ -1,15 +1,13 @@
 package org.apache.ibatis.test2;
 
 import org.apache.ibatis.BaseDataTest;
+import org.apache.ibatis.builder.xml.XMLConfigBuilder;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
 import javax.sql.DataSource;
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.Date;
 
 public class MySqlTest extends BaseDataTest {
@@ -41,17 +39,29 @@ public class MySqlTest extends BaseDataTest {
     @Test
     public void testASql(){
         try {
-            Connection con=ds.getConnection();
-            Statement sta=con.createStatement();
-            ResultSet re=sta.executeQuery("select * from t_logs");
-            ResultSet re2=sta.executeQuery("select * from t_logs limit 1");
-            System.out.println(re.wasNull()+""+re2.wasNull());
+          //  Connection con=ds.getConnection();
+
+
+
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
+    /**
+     *
+     *
+     for(int i=0;i<metaData.getColumnCount();i++){
 
+     //System.out.println("className:" + metaData.getColumnClassName(i));
+     //   System.out.println("ColumnName" + metaData.getColumnName(i));
+     //  System.out.println("ColumnTypeName" + metaData.getColumnTypeName(i));
+     //   System.out.println("CatalogName" + metaData.getCatalogName(i));
+     //   System.out.println("SchemaName" + metaData.getSchemaName(i));
+     //   System.out.println("ColumnDisplaySize" + metaData.getColumnDisplaySize(i));
+     }
+     System.out.println(metaData.getColumnCount());
+     */
 
 
 }

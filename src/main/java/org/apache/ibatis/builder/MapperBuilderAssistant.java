@@ -58,11 +58,16 @@ import org.apache.ibatis.type.TypeHandler;
  */
 public class MapperBuilderAssistant extends BaseBuilder {
 
-  //每个助手都有1个namespace,resource,cache
+  /**
+   * 每个助手都有1个namespace,resource,cache
+   */
   private String currentNamespace;
   private String resource;
   private Cache currentCache;
-  private boolean unresolvedCacheRef; // issue #676
+  /**
+   *  issue #676
+   */
+  private boolean unresolvedCacheRef;
 
   public MapperBuilderAssistant(Configuration configuration, String resource) {
     super(configuration);
